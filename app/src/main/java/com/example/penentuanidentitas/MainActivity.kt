@@ -9,7 +9,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.navigation.findNavController
 import com.example.penentuanidentitas.databinding.ActivityMainBinding
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -53,8 +52,7 @@ class MainActivity : AppCompatActivity() {
             }
             if (harakat == true){
                 val hasil_intent = Intent(this,HasilActivity::class.java)
-                hasil_intent.putExtra("EXTRA_KALIMAT", kalimat_clear)
-                hasil_intent.putStringArrayListExtra("EXTRA_KALIMAT_SPLIT", ArrayList(kalimat_split))
+                hasil_intent.putExtra("EXTRA_KALIMAT", kalimat_clear.toString())
                 startActivity(hasil_intent)
             }
         }
