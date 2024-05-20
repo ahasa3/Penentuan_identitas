@@ -10,7 +10,7 @@ class ProcessingKalimat {
             val ciriAkhir: MutableList<String> =
                 ArrayList() //berisi ciri akhir kata dari setiap kata
             val kalimat_split = kalimat.split(" ")
-            for ((index, kata) in kalimat_split.withIndex()) {
+            for (kata in kalimat_split) {
                 val panjang = kata.length
                 when {                                                                 //when pertama adalah mencari ciri akhir
                     kata.substring(panjang - 2, panjang) == "ًا" -> {                   //fathah tanwin  (1)
