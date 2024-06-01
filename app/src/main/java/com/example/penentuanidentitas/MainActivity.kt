@@ -42,7 +42,9 @@ class MainActivity : AppCompatActivity() {
                     kata.substring(panjang - 1, panjang)== "ُ" ||
                     kata.substring(panjang - 1, panjang)=="ٍ" ||
                     kata.substring(panjang - 1, panjang)=="ٌ" ||
-                    kata.substring(panjang - 2, panjang)=="ًا"){
+                    kata.substring(panjang - 2, panjang)=="ًا" ||
+                    kata.substring(panjang - 3, panjang)=="وْا" ||
+                    kata.substring(panjang - 2, panjang)=="َا"){
                     continue
                 }else {
                     harakat = false

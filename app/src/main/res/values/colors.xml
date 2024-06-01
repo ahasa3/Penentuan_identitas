@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="biru_langit">#27D3FE</color>
+    <color name="biru_langit_tua">#37D2F5</color>
+    <color name="biru">#084BAF</color>
+    <color name="biru_2">#0056EB</color>
 </resources>
