@@ -60,4 +60,31 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+//fun checkHarakat(kalimat: String) {
+//    val kalimat_clear = kalimat.trim()
+//    if (kalimat_clear.isNotEmpty()) {
+//        val kalimat_split = kalimat_clear.split(" ")
+//        val harakat = listOf("ْ", "َ", "ِ", "ُ", "ٍ", "ٌ", "ًا", "وْا", "َا")
+//        var isHarakatComplete = true
+//        for ((index, kata) in kalimat_split.withIndex()) {
+//            val lastChar = kata.takeLast(1)
+//            val lastTwoChars = kata.takeLast(2)
+//            val lastThreeChars = kata.takeLast(3)
+//            if (lastChar !in harakat && lastTwoChars !in harakat && lastThreeChars !in harakat) {
+//                isHarakatComplete = false
+//                val katake = index + 1
+//                Toast.makeText(this, "Kata ke $katake tidak berharakat lengkap", Toast.LENGTH_LONG).show()
+//                break
+//            }
+//        }
+//        if (isHarakatComplete) {
+//            val hasil_intent = Intent(this, HasilActivity::class.java).apply {
+//                putExtra("EXTRA_KALIMAT", kalimat_clear)
+//            }
+//            startActivity(hasil_intent)
+//        }
+//    } else {
+//        Toast.makeText(this, "Silahkan Masukkan Kalimat!", Toast.LENGTH_LONG).show()
+//    }
+//}
 }
