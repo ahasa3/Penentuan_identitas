@@ -654,7 +654,7 @@ class ProcessingKalimat {
                     identity == "Keluarga Kaana" ||
                             identity == "Keluarga Inna" ||
                             identity == "Adat Istisna'" ||
-                            identity == "Huruf Nida'" -> kedudukan.add("None")
+                            identity == "Huruf Nida'" -> kedudukan.add(identity)
                     identity == "Isim Dhomir" ->{
                         kedudukan.add("Mubtada")
                         mubtada = true

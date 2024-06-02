@@ -1,11 +1,11 @@
 package com.example.penentuanidentitas
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.penentuanidentitas.databinding.ActivityHasilBinding
 import android.view.ViewGroup
-import android.content.Intent
 
 class HasilActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHasilBinding
@@ -16,17 +16,17 @@ class HasilActivity : AppCompatActivity() {
         binding = ActivityHasilBinding.inflate(layoutInflater)
         setContentView(binding.root)
         kalimat = intent.getStringExtra("EXTRA_KALIMAT")
-        var kalimat_split = kalimat!!.split(" ")
+        val kalimat_split = kalimat!!.split(" ")
         val (identitas,ciriAwal,ciriAkhir) = ProcessingKalimat.findingIdentitas(kalimat!!)
         val (irab, tanda_irab) = ProcessingKalimat.findingIrab(kalimat!!,identitas,ciriAkhir)
         val kedudukan = ProcessingKalimat.findingKedudukan(kalimat!!,identitas,irab)
-        view_kedudukan(kalimat_split,identitas,irab,kedudukan)
+        viewKedudukan(kalimat_split,identitas,irab,kedudukan)
         keterangan(kalimat_split,identitas,ciriAwal,ciriAkhir,irab,tanda_irab,kedudukan)
     }
 
-    fun view_kedudukan(kalimat_split:List<String>, identitas:MutableList<String>, irab:MutableList<String>, kedudukan:MutableList<String>){
+    private fun viewKedudukan(kalimat_split:List<String>, identitas:MutableList<String>, irab:MutableList<String>, kedudukan:MutableList<String>){
 
-        for ((index, text) in kalimat_split!!.withIndex()){
+        for ((index, text) in kalimat_split.withIndex()){
             when(index){
                 0->{
                     binding.textViewHasil6.text = text
@@ -230,7 +230,37 @@ class HasilActivity : AppCompatActivity() {
             }
         }
     }
-    fun keterangan(kalimat_split:List<String>,identitas:MutableList<String>,ciriawal:MutableList<String>,ciriAkhir:MutableList<String>,irab:MutableList<String>,tanda_irab:MutableList<String>,kedudukan:MutableList<String>){
+    private fun keterangan(kalimat_split:List<String>,identitas:MutableList<String>,ciriawal:MutableList<String>,ciriAkhir:MutableList<String>,irab:MutableList<String>,tanda_irab:MutableList<String>,kedudukan:MutableList<String>){
+        binding.textViewKedudukan6.setOnClickListener {
+            val isi_dialog = listOf(kalimat_split[0],identitas[0],irab[0],tanda_irab[0],kedudukan[0])
+            val dialog_kedudukan = KedudukanDialog.intanceBaru(isi_dialog,"index6")
+            supportFragmentManager.let{dialog_kedudukan.show(it, KedudukanDialog.TAG)}
+        }
+        binding.textViewKedudukan5.setOnClickListener {
+            val isi_dialog = listOf(kalimat_split[1],identitas[1],irab[1],tanda_irab[1],kedudukan[1])
+            val dialog_kedudukan = KedudukanDialog.intanceBaru(isi_dialog,"index5")
+            supportFragmentManager.let{dialog_kedudukan.show(it, KedudukanDialog.TAG)}
+        }
+        binding.textViewKedudukan4.setOnClickListener {
+            val isi_dialog = listOf(kalimat_split[2],identitas[2],irab[2],tanda_irab[2],kedudukan[2])
+            val dialog_kedudukan = KedudukanDialog.intanceBaru(isi_dialog,"index4")
+            supportFragmentManager.let{dialog_kedudukan.show(it, KedudukanDialog.TAG)}
+        }
+        binding.textViewKedudukan3.setOnClickListener {
+            val isi_dialog = listOf(kalimat_split[3],identitas[3],irab[3],tanda_irab[3],kedudukan[3])
+            val dialog_kedudukan = KedudukanDialog.intanceBaru(isi_dialog,"index3")
+            supportFragmentManager.let{dialog_kedudukan.show(it, KedudukanDialog.TAG)}
+        }
+        binding.textViewKedudukan2.setOnClickListener {
+            val isi_dialog = listOf(kalimat_split[4],identitas[4],irab[4],tanda_irab[4],kedudukan[4])
+            val dialog_kedudukan = KedudukanDialog.intanceBaru(isi_dialog,"index2")
+            supportFragmentManager.let{dialog_kedudukan.show(it, KedudukanDialog.TAG)}
+        }
+        binding.textViewKedudukan1.setOnClickListener {
+            val isi_dialog = listOf(kalimat_split[5],identitas[5],irab[5],tanda_irab[5],kedudukan[5])
+            val dialog_kedudukan = KedudukanDialog.intanceBaru(isi_dialog,"index1")
+            supportFragmentManager.let{dialog_kedudukan.show(it, KedudukanDialog.TAG)}
+        }
         binding.textViewHasil6.setOnClickListener {
             val isi_dialog = listOf(kalimat_split[0],identitas[0],irab[0],tanda_irab[0],kedudukan[0])
             val dialog_hasil = HasilDialog.newInstance(isi_dialog,"index6")

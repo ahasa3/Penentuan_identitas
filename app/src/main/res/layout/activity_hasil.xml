@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:paddingTop="40dp">
 
@@ -25,32 +27,38 @@
             android:id="@+id/text_view_hasil_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            tools:ignore="MissingConstraints" />
         <TextView
             android:id="@+id/text_view_hasil_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            tools:ignore="MissingConstraints" />
         <TextView
             android:id="@+id/text_view_hasil_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            tools:ignore="MissingConstraints" />
         <TextView
             android:id="@+id/text_view_hasil_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            tools:ignore="MissingConstraints" />
         <TextView
             android:id="@+id/text_view_hasil_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            tools:ignore="MissingConstraints" />
         <TextView
             android:id="@+id/text_view_hasil_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            tools:ignore="MissingConstraints" />
     </LinearLayout>
 
     <TextView

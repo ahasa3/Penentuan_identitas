@@ -12,17 +12,17 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="360dp">
-            <TextView
-                android:id="@+id/irab"
-                android:layout_width="205dp"
-                android:layout_height="match_parent"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:background="@drawable/rounded_background"
-                android:text="IRAB"
-                tools:ignore="MissingConstraints" />
         <TextView
-            android:id="@+id/kedudukan"
+            android:id="@+id/irab_2"
+            android:layout_width="205dp"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:background="@drawable/rounded_background"
+            android:text="IRAB"
+            tools:ignore="MissingConstraints" />
+        <TextView
+            android:id="@+id/kedudukan_2"
             android:layout_width="205dp"
             android:layout_height="match_parent"
             android:textAlignment="center"
@@ -34,7 +34,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linear_layout"
+        android:id="@+id/linear_layout_2"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center"
@@ -43,7 +43,7 @@
         tools:layout_editor_absoluteY="400dp"
         app:layout_constraintTop_toBottomOf="@id/linear_layout1">
         <TextView
-            android:id="@+id/arab"
+            android:id="@+id/arab_2"
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,11 +60,11 @@
         android:layout_alignParentBottom="true"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="430dp"
-        app:layout_constraintTop_toBottomOf="@id/linear_layout"
+        app:layout_constraintTop_toBottomOf="@id/linear_layout_2"
         tools:ignore="MissingConstraints">
 
         <TextView
-            android:id="@+id/keterangan"
+            android:id="@+id/keterangan_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
