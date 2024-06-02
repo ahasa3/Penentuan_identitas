@@ -12,24 +12,24 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="360dp">
-                        <TextView
-                            android:id="@+id/irab"
-                            android:layout_width="205dp"
-                            android:layout_height="match_parent"
-                            android:textAlignment="center"
-                            android:gravity="center"
-                            android:background="@drawable/rounded_background"
-                            android:text="IRAB"
-                            tools:ignore="MissingConstraints" />
-                        <TextView
-                            android:id="@+id/kedudukan"
-                            android:layout_width="205dp"
-                            android:layout_height="match_parent"
-                            android:textAlignment="center"
-                            android:background="@drawable/rounded_background_2"
-                            android:gravity="center"
-                            android:text="KEDUDUKAN"
-                            tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/irab"
+                android:layout_width="205dp"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:background="@drawable/rounded_background"
+                android:text="IRAB"
+                tools:ignore="MissingConstraints" />
+        <TextView
+            android:id="@+id/kedudukan"
+            android:layout_width="205dp"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:background="@drawable/rounded_background_2"
+            android:gravity="center"
+            android:text="KEDUDUKAN"
+            tools:ignore="MissingConstraints" />
 
     </LinearLayout>
 

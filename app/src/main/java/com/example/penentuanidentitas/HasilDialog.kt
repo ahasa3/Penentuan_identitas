@@ -20,57 +20,7 @@ class HasilDialog: BottomSheetDialogFragment(){
             container,
             false
         )
-        val isi_text = arguments?.getStringArrayList(isi_dialog)
-        val kata = isi_text?.get(0)
-        val identitas = isi_text?.get(1)
-        val irab = isi_text?.get(2)
-        val tanda_irab = isi_text?.get(3)
-//        val kedudukan = isi_text?.get(4)
-        val warna = arguments?.getString(warna)
-        val drawable_left = resources.getDrawable(R.drawable.rounded_background, null) as GradientDrawable
-        val drawable_right = resources.getDrawable(R.drawable.rounded_background_2, null) as GradientDrawable
-        when (warna){
-            "index6"-> {
-                drawable_right.setColor(resources.getColor(R.color.index6_2, null))
-                drawable_left.setColor(resources.getColor(R.color.index6, null))
-                binding.scrollView.setBackgroundColor(resources.getColor(R.color.index6, null))
-                binding.linearLayout.setBackgroundColor(resources.getColor(R.color.index6, null))
-            }
-            "index5"->{
-                drawable_right.setColor(resources.getColor(R.color.index5, null))
-                drawable_left.setColor(resources.getColor(R.color.index5, null))
-                binding.scrollView.setBackgroundColor(resources.getColor(R.color.index5, null))
-                binding.linearLayout.setBackgroundColor(resources.getColor(R.color.index5, null))
-            }
-            "index4"->{
-                drawable_right.setColor(resources.getColor(R.color.index4, null))
-                drawable_left.setColor(resources.getColor(R.color.index4, null))
-                binding.scrollView.setBackgroundColor(resources.getColor(R.color.index4, null))
-                binding.linearLayout.setBackgroundColor(resources.getColor(R.color.index4, null))
-            }
-            "index3"->{
-                drawable_right.setColor(resources.getColor(R.color.index3, null))
-                drawable_left.setColor(resources.getColor(R.color.index3, null))
-                binding.scrollView.setBackgroundColor(resources.getColor(R.color.index3, null))
-                binding.linearLayout.setBackgroundColor(resources.getColor(R.color.index3, null))
-            }
-            "index2"->{
-                drawable_right.setColor(resources.getColor(R.color.index2, null))
-                drawable_left.setColor(resources.getColor(R.color.index2, null))
-                binding.scrollView.setBackgroundColor(resources.getColor(R.color.index2, null))
-                binding.linearLayout.setBackgroundColor(resources.getColor(R.color.index2, null))
-            }
-            "index1"->{
-                drawable_right.setColor(resources.getColor(R.color.index1, null))
-                drawable_left.setColor(resources.getColor(R.color.index1, null))
-                binding.scrollView.setBackgroundColor(resources.getColor(R.color.index1, null))
-                binding.linearLayout.setBackgroundColor(resources.getColor(R.color.index1, null))
-            }
-        }
-        binding.irab.background = drawable_left
-        binding.kedudukan.background = drawable_right
-        binding.arab.text = kata
-        binding.keterangan.text = "irabnya $irab ditandai dengan $tanda_irab  karena $identitas"
+        dialogView()
 
         return binding.root
     }
@@ -100,5 +50,63 @@ class HasilDialog: BottomSheetDialogFragment(){
             fragment.arguments = args
             return fragment
         }
+    }
+    fun dialogView(){
+        val isi_text = arguments?.getStringArrayList(isi_dialog)
+        val kata = isi_text?.get(0)
+        val identitas = isi_text?.get(1)
+        val irab = isi_text?.get(2)
+        val tanda_irab = isi_text?.get(3)
+//        val kedudukan = isi_text?.get(4)
+        val warna = arguments?.getString(warna)
+        val drawable_left = resources.getDrawable(R.drawable.rounded_background, null) as GradientDrawable
+        val drawable_right = resources.getDrawable(R.drawable.rounded_background_2, null) as GradientDrawable
+        when (warna){
+            "index6"-> {
+                drawable_right.setColor(resources.getColor(R.color.index6_2, null))
+                drawable_left.setColor(resources.getColor(R.color.index6, null))
+                binding.scrollView.setBackgroundColor(resources.getColor(R.color.index6, null))
+                binding.linearLayout.setBackgroundColor(resources.getColor(R.color.index6, null))
+            }
+            "index5"->{
+                drawable_right.setColor(resources.getColor(R.color.index5_2, null))
+                drawable_left.setColor(resources.getColor(R.color.index5, null))
+                binding.scrollView.setBackgroundColor(resources.getColor(R.color.index5, null))
+                binding.linearLayout.setBackgroundColor(resources.getColor(R.color.index5, null))
+            }
+            "index4"->{
+                drawable_right.setColor(resources.getColor(R.color.index4_2, null))
+                drawable_left.setColor(resources.getColor(R.color.index4, null))
+                binding.scrollView.setBackgroundColor(resources.getColor(R.color.index4, null))
+                binding.linearLayout.setBackgroundColor(resources.getColor(R.color.index4, null))
+            }
+            "index3"->{
+                drawable_right.setColor(resources.getColor(R.color.index3_2, null))
+                drawable_left.setColor(resources.getColor(R.color.index3, null))
+                binding.scrollView.setBackgroundColor(resources.getColor(R.color.index3, null))
+                binding.linearLayout.setBackgroundColor(resources.getColor(R.color.index3, null))
+            }
+            "index2"->{
+                drawable_right.setColor(resources.getColor(R.color.index2_2, null))
+                drawable_left.setColor(resources.getColor(R.color.index2, null))
+                binding.scrollView.setBackgroundColor(resources.getColor(R.color.index2, null))
+                binding.linearLayout.setBackgroundColor(resources.getColor(R.color.index2, null))
+            }
+            "index1"->{
+                drawable_right.setColor(resources.getColor(R.color.index1_2, null))
+                drawable_left.setColor(resources.getColor(R.color.index1, null))
+                binding.scrollView.setBackgroundColor(resources.getColor(R.color.index1, null))
+                binding.linearLayout.setBackgroundColor(resources.getColor(R.color.index1, null))
+            }
+        }
+        binding.irab.background = drawable_left
+        binding.kedudukan.background = drawable_right
+        binding.arab.text = kata
+        var text:String
+        when(irab){
+            "Mabni" -> text = "Hukumnya Mabni, karena merupakan $identitas"
+            else -> text = "Irabnya $irab ditandai dengan $tanda_irab  karena $identitas"
+        }
+        binding.keterangan.text = text
     }
 }
