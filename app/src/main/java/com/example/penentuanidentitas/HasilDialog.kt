@@ -105,14 +105,17 @@ class HasilDialog: BottomSheetDialogFragment(){
         var text:String
         when(irab){
             "Mabni" -> text = "Hukumnya Mabni, karena merupakan $identitas"
-            else -> text = "Irabnya $irab ditandai dengan $tanda_irab  karena $identitas"
+            else -> when(kedudukan){
+                "Mustasna'" -> text = "I'robnya $irab karena berada setelah Adat atau Alat Istisna'"
+                else -> text = "Irabnya $irab ditandai dengan $tanda_irab  karena $identitas"
+            }
         }
         binding.keterangan.text = text
         binding.kedudukan.setOnClickListener{
             dismiss()
             val isiDialog = listOf(kata!!,identitas!!,irab!!,tanda_irab!!,kedudukan!!)
             val previous = KedudukanDialog.intanceBaru(isiDialog,warna!!)
-            previous.show(parentFragmentManager, HasilDialog.TAG)
+            previous.show(parentFragmentManager, KedudukanDialog.TAG)
         }
     }
     fun tandaIrabText(tanda_irab:String):String{
