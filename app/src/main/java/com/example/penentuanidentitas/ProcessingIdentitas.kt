@@ -692,8 +692,9 @@ class ProcessingKalimat {
                             fiil = false
                             fail = true
                         }
-                        kata.substring(kata.length-1,kata.length)!= "ُ" &&
-                                kata.substring(0,2) != "ال" -> {
+                        kata.substring(kata.length-1,kata.length)== "ُ" &&
+                                kata.substring(0,2) != "ال" &&
+                        index!=0-> {
                             kedudukan.add("Mudhof")
                             idhofah = true
                         }
@@ -729,7 +730,7 @@ class ProcessingKalimat {
                             kedudukan.add("Maf'ul Bih")
                             fail = false
                         }
-                        kata.substring(kata.length-1,kata.length)!= "َ" &&
+                        kata.substring(kata.length-1,kata.length)=="َ" &&
                                 kata.substring(0,2) != "ال" -> {
                             kedudukan.add("Mudhof")
                             idhofah = true
@@ -748,7 +749,7 @@ class ProcessingKalimat {
                             kedudukan.add("Mudhof Ilaih")
                             idhofah = false
                         }
-                        kata.substring(kata.length-1,kata.length)!= "ِ" &&
+                        kata.substring(kata.length-1,kata.length)== "ِ" &&
                                 kata.substring(0,2) != "ال" -> {
                             kedudukan.add("Mudhof")
                             idhofah = true
