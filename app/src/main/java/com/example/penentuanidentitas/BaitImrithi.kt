@@ -108,7 +108,7 @@ class BaitImrithi {
                 "Demikian pula pada Asmaul khomsah, yang akan diterangkan secara beruntut, yaitu:",
                 "Semua asmaul khomsah (أَبٌ أَخٌ حَمٌ فُوكَ ذُو) itu harus diidhofahkan dan harus mufrad (bukan tatsniyah atau jama') dan harus serta mukabbar (tidak ditasghirkan)",
                 "Alif menjadi tanda rofa’ itu berada pada isim tatsniyah, Nun menjadi tanda rofa’ berada pada fi’il mudhari’ yang dikenah dengan ..",
-                "Yafalani dan Tafalani (Fi'il Mudlari yang akhirnya bertemu dengan dhamir alif tatsniyah) Yaf'aluna Taf'aluna (Fi'il mudhari yang akhirnya bertemu wawu jama’)",
+                "Yaf'alani dan Taf'alani (Fi'il Mudlari yang akhirnya bertemu dengan dhamir alif tatsniyah) Yaf'aluna Taf'aluna (Fi'il mudhari yang akhirnya bertemu wawu jama’)",
                 "Taf'aliina (Fi'il Mudari yang akhirnya bertemu ya’ muannats mukhathabah) yang dikenal dengan sebutan Af'aalul khamsah"
             )
         )
@@ -125,7 +125,7 @@ class BaitImrithi {
                 "Bab Tanda-tanda Nashob",
                 "I'rab Nashob itu mempunyai lima tanda, yaitu: Fathah, Alif, Kasrah, Ya’, dan Nun yang dibuang",
                 "Nashobkanlah dengan fathah pada setiap lafadz yang dirofa’kan dengan dhommah, kecuali pada lafadz seperti:  هِنْدَاتٍ (Jama’ mu’annas salim)",
-                "Nashobkanlah isim lima (asmaul khomsah) dengan alif. Jadi, alif menjadi tanda i’rab nashob itu hanya bertempat pada asmaul khomsah",
+                "Nashobkanlah isim lima (asmaul khomsah) dengan alif. Dan Nashobkan dengan Kasroh pada Jama' Muannats Salim",
                 "Ya’ menjadi tanda i’rab nashob itu hanya bertempat pada dua tempat, yaitu: Isim tatsniyah, dan Jama’ mudzakkar salim",
                 "Af'alul khomsah ketika tingkah nashob itu diberi tanda dengan membuang nun rofa’"
             )

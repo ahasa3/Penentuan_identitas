@@ -41,11 +41,9 @@ class HasilDialog: BottomSheetDialogFragment(){
     companion object {
         const val TAG = "HasilDialog"
         private const val isi_dialog= "arg_list"
-        private const val warna = "arg_warna"
-        fun newInstance(value: List<String>, iro:String): HasilDialog {
+        fun newInstance(value: List<String>): HasilDialog {
             val args = Bundle()
             args.putStringArrayList(isi_dialog, ArrayList(value))
-            args.putString(warna, iro)
             val fragment = HasilDialog()
             fragment.arguments = args
             return fragment
@@ -58,49 +56,6 @@ class HasilDialog: BottomSheetDialogFragment(){
         val irab = isi_text?.get(2)
         val tanda_irab = tandaIrabText(isi_text!!.get(3))
         val kedudukan = isi_text?.get(4)
-        val warna = arguments?.getString(warna)
-        val drawable_left = resources.getDrawable(R.drawable.rounded_background, null) as GradientDrawable
-        val drawable_right = resources.getDrawable(R.drawable.rounded_background_2, null) as GradientDrawable
-        when (warna){
-            "index6"-> {
-                drawable_right.setColor(resources.getColor(R.color.index6_2, null))
-                drawable_left.setColor(resources.getColor(R.color.index6, null))
-                binding.scrollView.setBackgroundColor(resources.getColor(R.color.index6, null))
-                binding.linearLayout.setBackgroundColor(resources.getColor(R.color.index6, null))
-            }
-            "index5"->{
-                drawable_right.setColor(resources.getColor(R.color.index5_2, null))
-                drawable_left.setColor(resources.getColor(R.color.index5, null))
-                binding.scrollView.setBackgroundColor(resources.getColor(R.color.index5, null))
-                binding.linearLayout.setBackgroundColor(resources.getColor(R.color.index5, null))
-            }
-            "index4"->{
-                drawable_right.setColor(resources.getColor(R.color.index4_2, null))
-                drawable_left.setColor(resources.getColor(R.color.index4, null))
-                binding.scrollView.setBackgroundColor(resources.getColor(R.color.index4, null))
-                binding.linearLayout.setBackgroundColor(resources.getColor(R.color.index4, null))
-            }
-            "index3"->{
-                drawable_right.setColor(resources.getColor(R.color.index3_2, null))
-                drawable_left.setColor(resources.getColor(R.color.index3, null))
-                binding.scrollView.setBackgroundColor(resources.getColor(R.color.index3, null))
-                binding.linearLayout.setBackgroundColor(resources.getColor(R.color.index3, null))
-            }
-            "index2"->{
-                drawable_right.setColor(resources.getColor(R.color.index2_2, null))
-                drawable_left.setColor(resources.getColor(R.color.index2, null))
-                binding.scrollView.setBackgroundColor(resources.getColor(R.color.index2, null))
-                binding.linearLayout.setBackgroundColor(resources.getColor(R.color.index2, null))
-            }
-            "index1"->{
-                drawable_right.setColor(resources.getColor(R.color.index1_2, null))
-                drawable_left.setColor(resources.getColor(R.color.index1, null))
-                binding.scrollView.setBackgroundColor(resources.getColor(R.color.index1, null))
-                binding.linearLayout.setBackgroundColor(resources.getColor(R.color.index1, null))
-            }
-        }
-        binding.irab.background = drawable_left
-        binding.kedudukan.background = drawable_right
         binding.arab.text = kata
         var text:String
         when(irab){
@@ -114,7 +69,7 @@ class HasilDialog: BottomSheetDialogFragment(){
         binding.kedudukan.setOnClickListener{
             dismiss()
             val isiDialog = listOf(kata!!,identitas!!,irab!!,tanda_irab!!,kedudukan!!)
-            val previous = KedudukanDialog.intanceBaru(isiDialog,warna!!)
+            val previous = KedudukanDialog.intanceBaru(isiDialog)
             previous.show(parentFragmentManager, KedudukanDialog.TAG)
         }
     }

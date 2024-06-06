@@ -526,7 +526,7 @@ class ProcessingKalimat {
                         "َ" ->when{
                             index!=0 && identitas[index-1] == "Amil Jawazim"->{
                                 irab.add("Jazm")
-                                tanda_irab.add("Membuang Huruf Illat")
+                                tanda_irab.add("Membuang Huruf 'Illat")
                             }
                             else->{
                                 irab.add("Nashob")
