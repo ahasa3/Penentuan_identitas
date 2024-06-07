@@ -495,16 +495,12 @@ class ProcessingKalimat {
             for ((index, kata) in kalimat_split.withIndex()){
                 val identity = identitas[index]
                 val akhir = ciriAkhir[index]
-                when (identity){
-                    "Huruf Athof", "Amil Nawashib",
-                    "Amil Jawazim", "Huruf Jer",
-                    "Asmaul Khamsah", "Keluarga Kaana",
-                    "Keluarga Inna", "Isim Dhomir",
-                    "Lafadz Taukid", "Adat Istisna'" ->{
-                        irab.add("Mabni")
-                        tanda_irab.add("None")
+                when{
+                    index!=0 && identitas[index-1] == "Huruf Athof" ->{
+                        irab.add("Mengikuti Irab Sebelumnya")
+                        tanda_irab.add(akhir)
                     }
-                    "Isim Mufrod" -> when (akhir) {
+                    identity == "Isim Mufrod" -> when (akhir) {
                         "ُ","ٌ" ->{
                             irab.add("Rofa'")
                             tanda_irab.add(akhir)
@@ -518,7 +514,7 @@ class ProcessingKalimat {
                             tanda_irab.add(akhir)
                         }
                     }
-                    "Fi'il Mudhari'" -> when (akhir){
+                    identity == "Fi'il Mudhari'" -> when (akhir){
                         "ُ" ->{
                             irab.add("Rofa'")
                             tanda_irab.add(akhir)
@@ -542,7 +538,7 @@ class ProcessingKalimat {
                             tanda_irab.add("Nun Jama' Niswah")
                         }
                     }
-                    "Af'alul Khomsah" -> when(akhir){
+                    identity == "Af'alul Khomsah" -> when(akhir){
                         "انِ","وْنَ","يْنَ" -> {
                             irab.add("Rofa'")
                             tanda_irab.add("Tetapnya Nun")
@@ -560,32 +556,32 @@ class ProcessingKalimat {
                             }
                         }
                     }
-                    "Fi'il Madhi" -> {
+                    identity == "Fi'il Madhi" -> {
                         irab.add("Mabni")
                         tanda_irab.add("None")
                     }
-                    "Fi'il Amr" -> {
+                    identity == "Fi'il Amr" -> {
                         irab.add("Mabni")
                         tanda_irab.add("None")
                     }
-                    "Isim Tatsniyah" -> when(akhir){
+                    identity == "Isim Tatsniyah" -> when(akhir){
                         "انِ" ->{
                             irab.add("Rofa'")
                             tanda_irab.add("ا")
                         }
                         "يْنِ" ->{
-                            irab.add("Nashab")
+                            irab.add("Nashob")
                             tanda_irab.add("ي")
                         }
                     }
-                    "Jama' Mudzakar Salim" -> when(akhir){
+                    identity == "Jama' Mudzakar Salim" -> when(akhir){
                         "وْنَ" ->{
                             irab.add("Rofa'")
                             tanda_irab.add("و")
                         }
                         "يْنَ" ->when{
                             identitas[index-1]=="Amil Nawashib" ->{
-                                irab.add("Nashab")
+                                irab.add("Nashob")
                                 tanda_irab.add("ي")
                             }
                             identitas[index-1]=="Huruf Jer" ->{
@@ -594,7 +590,7 @@ class ProcessingKalimat {
                             }
                         }
                     }
-                    "Jama' Muannats Salim" -> when(kata.substring(kata.length-1,kata.length)){
+                    identity == "Jama' Muannats Salim" -> when(kata.substring(kata.length-1,kata.length)){
                         "ُ" -> {
                             irab.add("Rofa'")
                             tanda_irab.add(kata.substring(kata.length-1,kata.length))
@@ -602,12 +598,12 @@ class ProcessingKalimat {
                         "ِ" -> when{
                             index != 0 &&
                                     identitas[index - 1] == "Huruf Jer" ->{
-                                irab.add("Jazm")
+                                irab.add("Jer")
                                 tanda_irab.add(kata.substring(kata.length-1,kata.length))
                             }
                             index!=0 &&
                                     identitas[index-1] == "Amil Nawashib" ->{
-                                irab.add("Nashab")
+                                irab.add("Nashob")
                                 tanda_irab.add(kata.substring(kata.length-1,kata.length))
                             }
                             else ->{
@@ -616,14 +612,14 @@ class ProcessingKalimat {
                             }
                         }
                     }
-                    "Asmaul Khomsah" -> when{
+                    identity=="Asmaul Khomsah" -> when{
                         kata.substring(4,5) == "ُ" ||
                                 kata.substring(4,5) == "ٌ" ->{
                             irab.add("Rofa'")
                             tanda_irab.add(kata.substring(4,5))
                         }
                         kata.substring(4,5) == "َ" ->{
-                            irab.add("Nashab")
+                            irab.add("Nashob")
                             tanda_irab.add(kata.substring(4,5))
                         }
                         kata.substring(4,5) == "ِ" ->{
@@ -735,7 +731,7 @@ class ProcessingKalimat {
                             kedudukan.add("Mudhof")
                             idhofah = true
                         }
-                        index!=0 && irab_[index-1] == "Nashab" -> {
+                        index!=0 && irab_[index-1] == "Nashob" -> {
                             kedudukan.add("Na'at")
                         }
                         else -> kedudukan.add("Tidak diketahui")
@@ -754,11 +750,12 @@ class ProcessingKalimat {
                             kedudukan.add("Mudhof")
                             idhofah = true
                         }
-                        index!=0 && irab_[index-1] == "Nashab" -> {
+                        index!=0 && irab_[index-1] == "Nashob" -> {
                             kedudukan.add("Na'at")
                         }
                         else -> kedudukan.add("Tidak diketahui")
                     }
+                    index!=0 && identitas[index-1]=="Huruf Athof" -> kedudukan.add("Mengikuti Kedudukan Sebelumnya")
                     else -> kedudukan.add("Tidak diketahui")
                 }
             }

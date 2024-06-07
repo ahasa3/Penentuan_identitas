@@ -107,7 +107,7 @@ class BaitImrithi {
                 "Wawu menjadi tanda rofa’ berada pada jama’ mudzakkar salim, Misalnya seperti الصَّالِحُونَ هُمْ أُولُو المَكَارِمِ",
                 "Demikian pula pada Asmaul khomsah, yang akan diterangkan secara beruntut, yaitu:",
                 "Semua asmaul khomsah (أَبٌ أَخٌ حَمٌ فُوكَ ذُو) itu harus diidhofahkan dan harus mufrad (bukan tatsniyah atau jama') dan harus serta mukabbar (tidak ditasghirkan)",
-                "Alif menjadi tanda rofa’ itu berada pada isim tatsniyah, Nun menjadi tanda rofa’ berada pada fi’il mudhari’ yang dikenah dengan ..",
+                "Alif menjadi tanda rofa’ itu berada pada isim tatsniyah, Nun menjadi tanda rofa’ berada pada fi’il mudhari’ yang diketahui dengan..",
                 "Yaf'alani dan Taf'alani (Fi'il Mudlari yang akhirnya bertemu dengan dhamir alif tatsniyah) Yaf'aluna Taf'aluna (Fi'il mudhari yang akhirnya bertemu wawu jama’)",
                 "Taf'aliina (Fi'il Mudari yang akhirnya bertemu ya’ muannats mukhathabah) yang dikenal dengan sebutan Af'aalul khamsah"
             )

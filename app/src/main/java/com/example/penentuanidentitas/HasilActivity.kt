@@ -179,8 +179,15 @@ class HasilActivity : AppCompatActivity() {
                 }
             }
         }
-        for((index,posisi_) in kedudukan.withIndex()){
-            val posisi = posisi_.replace(" ","\n")
+        for((index,posisi__) in kedudukan.withIndex()){
+            var posisi:String
+            when(posisi__){
+                "Mengikuti Kedudukan Sebelumnya" ->when(irab[index-1]){
+                    "Mabni" -> posisi = kedudukan[index-2]
+                    else-> posisi = kedudukan[index-1]
+                }
+                else -> posisi = posisi__.replace(" ","\n")
+            }
             when(index){
                 0->{
                     binding.textViewKedudukan6.text = posisi
@@ -232,32 +239,64 @@ class HasilActivity : AppCompatActivity() {
     }
     private fun keterangan(kalimat_split:List<String>,identitas:MutableList<String>,ciriawal:MutableList<String>,ciriAkhir:MutableList<String>,irab:MutableList<String>,tanda_irab:MutableList<String>,kedudukan:MutableList<String>){
         binding.textViewKedudukan6.setOnClickListener {
-            val isi_dialog = listOf(kalimat_split[0],identitas[0],irab[0],tanda_irab[0],kedudukan[0])
+            val isi_dialog = listOf(kalimat_split[0],identitas[0],irab[0],tanda_irab[0],kedudukan[0],"None")
             val dialog_kedudukan = KedudukanDialog.intanceBaru(isi_dialog)
             supportFragmentManager.let{dialog_kedudukan.show(it, KedudukanDialog.TAG)}
         }
         binding.textViewKedudukan5.setOnClickListener {
-            val isi_dialog = listOf(kalimat_split[1],identitas[1],irab[1],tanda_irab[1],kedudukan[1])
+            val isi_dialog = listOf(kalimat_split[1],identitas[1],irab[1],tanda_irab[1],kedudukan[1],kalimat_split[0],"None")
             val dialog_kedudukan = KedudukanDialog.intanceBaru(isi_dialog)
             supportFragmentManager.let{dialog_kedudukan.show(it, KedudukanDialog.TAG)}
         }
         binding.textViewKedudukan4.setOnClickListener {
-            val isi_dialog = listOf(kalimat_split[2],identitas[2],irab[2],tanda_irab[2],kedudukan[2])
+            val kedudukanSebelumnya:String
+            when(irab[2]){
+                "Mengikuti Kedudukan Sebelumnya" -> when {
+                    irab[0] == "Mabni" -> kedudukanSebelumnya = irab[0]
+                    else-> kedudukanSebelumnya = irab[1]
+                }
+                else-> kedudukanSebelumnya = "None"
+            }
+            val isi_dialog = listOf(kalimat_split[2],identitas[2],irab[2],tanda_irab[2],kedudukan[2],kalimat_split[1],kedudukanSebelumnya)
             val dialog_kedudukan = KedudukanDialog.intanceBaru(isi_dialog)
             supportFragmentManager.let{dialog_kedudukan.show(it, KedudukanDialog.TAG)}
         }
         binding.textViewKedudukan3.setOnClickListener {
-            val isi_dialog = listOf(kalimat_split[3],identitas[3],irab[3],tanda_irab[3],kedudukan[3])
+            val kedudukanSebelumnya:String
+            when(irab[3]){
+                "Mengikuti Kedudukan Sebelumnya" -> when {
+                    irab[0] == "Mabni" -> kedudukanSebelumnya = irab[1]
+                    else-> kedudukanSebelumnya = irab[2]
+                }
+                else-> kedudukanSebelumnya = "None"
+            }
+            val isi_dialog = listOf(kalimat_split[3],identitas[3],irab[3],tanda_irab[3],kedudukan[3],kalimat_split[2],kedudukanSebelumnya)
             val dialog_kedudukan = KedudukanDialog.intanceBaru(isi_dialog)
             supportFragmentManager.let{dialog_kedudukan.show(it, KedudukanDialog.TAG)}
         }
         binding.textViewKedudukan2.setOnClickListener {
-            val isi_dialog = listOf(kalimat_split[4],identitas[4],irab[4],tanda_irab[4],kedudukan[4])
+            val kedudukanSebelumnya:String
+            when (irab[4]){
+                "Mengikuti Kedudukan Sebelumnya" -> when {
+                    irab[0] == "Mabni" -> kedudukanSebelumnya = irab[2]
+                    else-> kedudukanSebelumnya = irab[3]
+                }
+                else-> kedudukanSebelumnya = "None"
+            }
+            val isi_dialog = listOf(kalimat_split[4],identitas[4],irab[4],tanda_irab[4],kedudukan[4],kalimat_split[3],kedudukanSebelumnya)
             val dialog_kedudukan = KedudukanDialog.intanceBaru(isi_dialog)
             supportFragmentManager.let{dialog_kedudukan.show(it, KedudukanDialog.TAG)}
         }
         binding.textViewKedudukan1.setOnClickListener {
-            val isi_dialog = listOf(kalimat_split[5],identitas[5],irab[5],tanda_irab[5],kedudukan[5])
+            val kedudukanSebelumnya:String
+            when (irab[5]){
+                "Mengikuti Kedudukan Sebelumnya" -> when {
+                    irab[0] == "Mabni" -> kedudukanSebelumnya = irab[3]
+                    else-> kedudukanSebelumnya = irab[4]
+                }
+                else-> kedudukanSebelumnya = "None"
+            }
+            val isi_dialog = listOf(kalimat_split[5],identitas[5],irab[5],tanda_irab[5],kedudukan[5],kalimat_split[4],kedudukanSebelumnya)
             val dialog_kedudukan = KedudukanDialog.intanceBaru(isi_dialog)
             supportFragmentManager.let{dialog_kedudukan.show(it, KedudukanDialog.TAG)}
         }
@@ -272,22 +311,54 @@ class HasilActivity : AppCompatActivity() {
             supportFragmentManager.let{dialog_hasil.show(it, HasilDialog.TAG)}
         }
         binding.textViewHasil4.setOnClickListener {
-            val isi_dialog = listOf(kalimat_split[2],identitas[2],irab[2],tanda_irab[2],kedudukan[2])
+            val irabSebelumnya:String
+            when(irab[2]){
+                "Mengikuti Irab Sebelumnya" -> when {
+                    irab[0] == "Mabni" -> irabSebelumnya = irab[0]
+                    else -> irabSebelumnya = irab[1]
+                }
+                else-> irabSebelumnya = "None"
+            }
+            val isi_dialog = listOf(kalimat_split[2],identitas[2],irab[2],tanda_irab[2],kedudukan[2],irabSebelumnya)
             val dialog_hasil = HasilDialog.newInstance(isi_dialog)
             supportFragmentManager.let{dialog_hasil.show(it, HasilDialog.TAG)}
         }
         binding.textViewHasil3.setOnClickListener {
-            val isi_dialog = listOf(kalimat_split[3],identitas[3],irab[3],tanda_irab[3],kedudukan[3])
+            val irabSebelumnya:String
+            when(irab[3]){
+                "Mengikuti Irab Sebelumnya" -> when {
+                    irab[0] == "Mabni" -> irabSebelumnya = irab[1]
+                    else -> irabSebelumnya = irab[2]
+                }
+                else-> irabSebelumnya = "None"
+            }
+            val isi_dialog = listOf(kalimat_split[3],identitas[3],irab[3],tanda_irab[3],kedudukan[3],irabSebelumnya)
             val dialog_hasil = HasilDialog.newInstance(isi_dialog)
             supportFragmentManager.let{dialog_hasil.show(it, HasilDialog.TAG)}
         }
         binding.textViewHasil2.setOnClickListener {
-            val isi_dialog = listOf(kalimat_split[4],identitas[4],irab[4],tanda_irab[4],kedudukan[4])
+            val irabSebelumnya:String
+            when(irab[4]){
+                "Mengikuti Irab Sebelumnya" -> when {
+                    irab[0] == "Mabni" -> irabSebelumnya = irab[2]
+                    else -> irabSebelumnya = irab[3]
+                }
+                else-> irabSebelumnya = "None"
+            }
+            val isi_dialog = listOf(kalimat_split[4],identitas[4],irab[4],tanda_irab[4],kedudukan[4],irabSebelumnya)
             val dialog_hasil = HasilDialog.newInstance(isi_dialog)
             supportFragmentManager.let{dialog_hasil.show(it, HasilDialog.TAG)}
         }
         binding.textViewHasil1.setOnClickListener {
-            val isi_dialog = listOf(kalimat_split[5],identitas[5],irab[5],tanda_irab[5],kedudukan[5])
+            val irabSebelumnya:String
+            when(irab[5]){
+                "Mengikuti Irab Sebelumnya" -> when {
+                    irab[0] == "Mabni" -> irabSebelumnya = irab[3]
+                    else -> irabSebelumnya = irab[4]
+                }
+                else-> irabSebelumnya = "None"
+            }
+            val isi_dialog = listOf(kalimat_split[5],identitas[5],irab[5],tanda_irab[5],kedudukan[5], irabSebelumnya)
             val dialog_hasil = HasilDialog.newInstance(isi_dialog)
             supportFragmentManager.let{dialog_hasil.show(it, HasilDialog.TAG)}
         }
@@ -302,22 +373,54 @@ class HasilActivity : AppCompatActivity() {
             supportFragmentManager.let{dialog_hasil.show(it, HasilDialog.TAG)}
         }
         binding.textViewIrab4.setOnClickListener {
-            val isi_dialog = listOf(kalimat_split[2],identitas[2],irab[2],tanda_irab[2],kedudukan[2])
+            val irabSebelumnya:String
+            when(irab[2]){
+                "Mengikuti Irab Sebelumnya" -> when {
+                    irab[0] == "Mabni" -> irabSebelumnya = irab[0]
+                    else -> irabSebelumnya = irab[1]
+                }
+                else-> irabSebelumnya = "None"
+            }
+            val isi_dialog = listOf(kalimat_split[2],identitas[2],irab[2],tanda_irab[2],kedudukan[2],irabSebelumnya)
             val dialog_hasil = HasilDialog.newInstance(isi_dialog)
             supportFragmentManager.let{dialog_hasil.show(it, HasilDialog.TAG)}
         }
         binding.textViewIrab3.setOnClickListener {
-            val isi_dialog = listOf(kalimat_split[3],identitas[3],irab[3],tanda_irab[3],kedudukan[3])
+            val irabSebelumnya:String
+            when(irab[3]) {
+                "Mengikuti Irab Sebelumnya" -> when {
+                    irab[0] == "Mabni" -> irabSebelumnya = irab[1]
+                    else -> irabSebelumnya = irab[2]
+                }
+                else-> irabSebelumnya = "None"
+            }
+            val isi_dialog = listOf(kalimat_split[3],identitas[3],irab[3],tanda_irab[3],kedudukan[3],irabSebelumnya)
             val dialog_hasil = HasilDialog.newInstance(isi_dialog)
             supportFragmentManager.let{dialog_hasil.show(it, HasilDialog.TAG)}
         }
         binding.textViewIrab2.setOnClickListener {
-            val isi_dialog = listOf(kalimat_split[4],identitas[4],irab[4],tanda_irab[4],kedudukan[4])
+            val irabSebelumnya:String
+            when (irab[4]){
+                "Mengikuti Irab Sebelumnya" -> when {
+                    irab[0] == "Mabni" -> irabSebelumnya = irab[2]
+                    else -> irabSebelumnya = irab[3]
+                }
+                else-> irabSebelumnya = "None"
+            }
+            val isi_dialog = listOf(kalimat_split[4],identitas[4],irab[4],tanda_irab[4],kedudukan[4],irabSebelumnya)
             val dialog_hasil = HasilDialog.newInstance(isi_dialog)
             supportFragmentManager.let{dialog_hasil.show(it, HasilDialog.TAG)}
         }
         binding.textViewIrab1.setOnClickListener {
-            val isi_dialog = listOf(kalimat_split[5],identitas[5],irab[5],tanda_irab[5],kedudukan[5])
+            val irabSebelumnya:String
+            when (irab[5]) {
+                "Mengikuti Irab Sebelumnya" -> when {
+                    irab[0] == "Mabni" -> irabSebelumnya = irab[3]
+                    else -> irabSebelumnya = irab[4]
+                }
+                else -> irabSebelumnya = "None"
+            }
+            val isi_dialog = listOf(kalimat_split[5],identitas[5],irab[5],tanda_irab[5],kedudukan[5],irabSebelumnya)
             val dialog_hasil = HasilDialog.newInstance(isi_dialog)
             supportFragmentManager.let{dialog_hasil.show(it, HasilDialog.TAG)}
         }

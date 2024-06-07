@@ -2,11 +2,13 @@ package com.example.penentuanidentitas
 
 class DalilKeterangan {
     companion object{
-        fun dalil(irab:String,identitas:String,tanda_irab:String):Pair<MutableList<String>,MutableList<String>>{
+        fun dalilIrab(irab:String,identitas:String,tanda_irab:String,irab_sebelumnya:String):Pair<MutableList<String>,MutableList<String>>{
             var arab:MutableList<String> = ArrayList()
             var terjemah:MutableList<String> = ArrayList()
-            when(irab){
-                "rofa'" -> when(identitas){
+            when{
+                irab=="Mengikuti Irab Sebelumnya" ->{
+                }
+                irab=="rofa'" -> when(identitas){
                     "Isim Mufrod", "Jama' Muannats Salim", "Fi'il Mudhari'" -> {
                         arab = mutableListOf(
                             BaitImrithi.babTandaRofa["arab"]!!.get(2),
@@ -15,7 +17,15 @@ class DalilKeterangan {
                             BaitImrithi.babTandaRofa["terjemah"]!!.get(2),
                             BaitImrithi.babTandaRofa["terjemah"]!!.get(3))
                     }
-                    "Jama' Mudzakkar Salim", "Asmaul Khomsah" -> {
+                    "Jama' Mudzakkar Salim" ->{
+                        arab = mutableListOf(
+                            BaitImrithi.babTandaRofa["arab"]!!.get(4)
+                        )
+                        terjemah = mutableListOf(
+                            BaitImrithi.babTandaRofa["terjemah"]!!.get(4)
+                        )
+                    }
+                    "Asmaul Khomsah" -> {
                         arab = mutableListOf(
                             BaitImrithi.babTandaRofa["arab"]!!.get(4),
                             BaitImrithi.babTandaRofa["arab"]!!.get(5),
@@ -48,7 +58,7 @@ class DalilKeterangan {
                         )
                     }
                 }
-                "Nashob" -> when(identitas){
+                irab=="Nashob" -> when(identitas){
                     "Isim Mufrod", "Fi'il Mudhari'" -> {
                         arab = mutableListOf(
                             BaitImrithi.babTandaNashob["arab"]!!.get(2)
@@ -90,7 +100,7 @@ class DalilKeterangan {
                         )
                     }
                 }
-                "Jer" -> when(identitas){
+                irab=="Jer" -> when(identitas){
                     "Isim Mufrod", "Jama' Muannats Salim" -> {
                         arab = mutableListOf(
                             BaitImrithi.babTandaJer["arab"]!!.get(2)
@@ -116,7 +126,7 @@ class DalilKeterangan {
                         )
                     }
                 }
-                "Jazm" -> when(identitas){
+                irab=="Jazm" -> when(identitas){
                     "Af'alul Khomsah" -> {
                         arab = mutableListOf(
                             BaitImrithi.babTandaJazm["arab"]!!.get(2)
@@ -129,18 +139,18 @@ class DalilKeterangan {
                         when(tanda_irab){
                             "Membuang Huruf 'Illat" -> {
                                 arab = mutableListOf(
-                                    BaitImrithi.babTandaJazm["arab"]!!.get(3)
-                                )
-                                terjemah = mutableListOf(
-                                    BaitImrithi.babTandaJazm["terjemah"]!!.get(3)
-                                )
-                            }
-                            else -> {
-                                arab = mutableListOf(
                                     BaitImrithi.babTandaJazm["arab"]!!.get(4)
                                 )
                                 terjemah = mutableListOf(
                                     BaitImrithi.babTandaJazm["terjemah"]!!.get(4)
+                                )
+                            }
+                            else -> {
+                                arab = mutableListOf(
+                                    BaitImrithi.babTandaJazm["arab"]!!.get(3)
+                                )
+                                terjemah = mutableListOf(
+                                    BaitImrithi.babTandaJazm["terjemah"]!!.get(3)
                                 )
                             }
                         }

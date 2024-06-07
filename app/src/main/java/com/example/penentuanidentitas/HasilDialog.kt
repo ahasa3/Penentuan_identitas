@@ -54,12 +54,16 @@ class HasilDialog: BottomSheetDialogFragment(){
         val kata = isi_text?.get(0)
         val identitas = isi_text?.get(1)
         val irab = isi_text?.get(2)
-        val tanda_irab = tandaIrabText(isi_text!!.get(3))
-        val kedudukan = isi_text?.get(4)
+        val tanda_irab = isi_text!!.get(3)
+        val kedudukan = isi_text.get(4)
+        val kataSebelumnya = isi_text.get(5)
         binding.arab.text = kata
         var text:String
         when(irab){
-            "Mabni" -> text = "Hukumnya Mabni, karena merupakan $identitas"
+            "Mabni" -> when(identitas){
+                "Fi'il Mudhari'" -> text = "Hukumnya $identitas karena merupakan $identitas yang diakhiri dengan $tanda_irab"
+                else -> text = "Hukumnya Mabni, karena merupakan $identitas"
+            }
             else -> when(kedudukan){
                 "Mustasna'" -> text = "I'robnya $irab karena berada setelah Adat atau Alat Istisna'"
                 else -> text = "Irabnya $irab ditandai dengan $tanda_irab  karena $identitas"
