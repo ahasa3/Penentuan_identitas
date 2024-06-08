@@ -79,7 +79,7 @@ class BaitImrithi {
             ),
             "terjemah" to arrayOf(
                 "Bab I'rob",
-                "I’rob menurut ahli nahwu ialah berubahnya akhir-akhir kalimah ‘amil (Yang memerintah) yang masuk kepadanya, baik berubah kira-kira maupun lafaznya",
+                "I’rob menurut ahli nahwu ialah berubahnya akhir-akhir kalimah ‘amil (Yang memerintah) yang masuk kepadanya, baik berubah kira-kira maupun lafadznya",
                 "Pembagian I’rob itu ada empat macam, yaitu: Rofa’, Nashob, Jazm, dan Jer",
                 "Semua i'rob selain Jazm dapat jatuh pada isim, semua irab dapat jatuh di fi'il selain jer",
                 "Semua isim yang tiada serupa yang mendekatkan pada huruf, itu hukumnya mu’rob",
@@ -102,7 +102,7 @@ class BaitImrithi {
             "terjemah" to arrayOf(
                 "Bab Tanda-tanda Rofa'",
                 "Bagi i’rob Rofa’ ada tanda-tandanya, yaitu: dhommah, wawu, alif, dan nun yang tidak dibuang",
-                "Dhommah menjadi tanda rofa’ dalam Isim mufrod seperti Ahmad, Jama’ taksir seperti جَاءَ الأَعْبُدِ",
+                "Dhommah menjadi tanda rofa’ pada Isim mufrod seperti أَحْمَدِ, dan pada Jama’ taksir seperti جَاءَ الأَعْبُدِ",
                 "Jama’ muannats salim, seperti Muslimat, dan setiap Fi'il yang mu’rob (mudhari’)",
                 "Wawu menjadi tanda rofa’ berada pada jama’ mudzakkar salim, Misalnya seperti الصَّالِحُونَ هُمْ أُولُو المَكَارِمِ",
                 "Demikian pula pada Asmaul khomsah, yang akan diterangkan secara beruntut, yaitu:",
@@ -371,8 +371,8 @@ class BaitImrithi {
                 "أَنَا, نَحْنُ, أَنْتَ, أَنْتِ, أَنْتُمَا, أَنْتُنَّ, أَنْتُمْ, هْوَ, هْيَ, هُمْ, هُمَا",
                 "Begitu juga هُنَّ, semuanya dua belas, contoh-contohnya telah lewat",
                 "Khobar itu ada dua, yaitu khobar mufrod dan khobar ghairu mufrod, Adapun khobar mufrod yaitu seperti dalam nazham terdahulu",
-                "Adapun khobar ghoiru mufrod itu ada empat macam, yaitu dzorof Jer majrur",
-                "Fa’il serta fi’ilnya, Mubtada’ serta khabarnya",
+                "Adapun khobar ghoiru mufrod itu ada empat macam, yaitu dzorof (1), Jer majrur (2)",
+                "Fa’il serta fi’ilnya (3), Mubtada’ serta khabarnya (4)",
                 "Seperti: أَنْتَ عِنْدِي, الْفَتَى بِدَارِي, ابْنِي قَرَا, ذَا أَبُوهُ قَارِي"
             )
         )
@@ -401,7 +401,7 @@ class BaitImrithi {
                 "إن وأخواتها",
                 "تَنْصِبُ إِنَّ المُبْتَدَا اسْماً وَالْخَبَرْ * تَرْفَعُهُ كَإِنَّ زَيْداً ذُو نَظَرْ",
                 "وَمِثْلُ إِنَّ أَنَّ لَيْتَ فِي الْعَمَلْ * وَهَكَذَا كَأَنَّ لَكِنَّ لَعَلّ",
-                "وَأَكَّدُوا المَعْنَى بِإِنَّ أَنَّا * وَلَيْتَ مِنْ أَلْفَاظِ مَنْ تَمَنَّى",
+                "وَأَكَّدُوا المَعْنَى بِإِنَّ أَنَّ * وَلَيْتَ مِنْ أَلْفَاظِ مَنْ تَمَنَّى",
                 "كَأّنَّ لِلتَّشْبِيهِ فِي المُحَاكِي * واسْتَعْمَلُوا لكِنَّ فِي اسْتِدْرَاكِي",
                 "وَلِتَرَجٍّ وَتَوَقُّعٍ لَعَلّ * كَقَوْلِهِمْ لَعَلَّ مَحْبُوبِي وَصَلْ"
             ),
@@ -409,7 +409,7 @@ class BaitImrithi {
                 "Inna dan saudara-saudaranya",
                 "Inna itu menashobkan mubtada’ sebagai isimnya dan merofa’kan khobarnya, seperti lafadz إِنَّ زَيْداً ذُو نَظَر",
                 "Dan seperti inna (dalam pengalamannya) yaitu: إِنَّ, أَنَّ, لَيْتَ, كَأَنَّ, لَكِنَّ, لَعَلّ",
-                "Kuatkan makna dengan إِنَّ dan أَنَّا. Lalu لَيْتَ termasuk lafad Tamanni",
+                "Kuatkan makna dengan إِنَّ dan أَنَّ. Lalu لَيْتَ termasuk lafad Tamanni",
                 "Kemudian كَأّنَّ untuk tasybih (menyerupakan), لكِنَّ untuk istidrak (penyanggahan)",
                 "Lafadz لَعَلّ untuk تَرَجٍّ dan تَوَقُّعٍ, seperti ucapan orang arab لَعَلَّ مَحْبُوبِي وَصَل (andaikan kekasihku sampai)"
             )
@@ -456,7 +456,7 @@ class BaitImrithi {
                 "Contohnya أَتَى غُلاَمٌ سَائِلَه زَوْجَتُهُ عَنْ دَيْنِهَا المُحْتَاجِ لَه"
             )
         )
-        val babAtaf = mapOf(
+        val babAthof = mapOf(
             "arab" to arrayOf(
                 "بَابُ الْعَطْفِ",
                 "وَأَتْبَعوا المَعْطُوفَ بِالْمَعْطوفِ * عَلَيْهِ فِي إِعْرَابِهِ المَعْرُوفِ",
@@ -466,8 +466,8 @@ class BaitImrithi {
                 "وَفِئَةٌ لَمْ يَأْكُلُوا أَويَحْضُرُوا * حَتَّى يَفُوتَ أَوْيَزُولَ المُنْكَرُ"
             ),
             "terjemah" to arrayOf(
-                "Bab Ataf",
-                "Ahli nahwu mengikutkan ma’thuf (kalimat yang di ’athafkan) kepada ma’thuf ‘alaih (kalimat yang di ’athafkan) dalam i’robnya yang sudah diketahui (yakni rofa’, nashob, jer. jazm)",
+                "Bab Athof",
+                "Ahli nahwu mengikutkan ma’thuf (kalimat yang di ’athofkan) kepada ma’thuf ‘alaih dalam i’robnya yang sudah diketahui (yakni rofa’, nashob, jer. jazm)",
                 "Sama antara isim dan fi'il dalam hal diikutkan jika di 'atafkan",
                 "Dengan wawu, fa, أَو, أَمْ, ثُمَّ, حَتَّى, بَلْ, لاَ, لَكِنِ, أَمَّا",
                 "Seperti جَاءَ زَيْدٌ ثُمَّ عَمْرٌو, أَكْرِمِ زَيْداً وَعَمْراً بِاللِّقَا وَالْمَطْعَم",
@@ -509,7 +509,7 @@ class BaitImrithi {
             ),
             "terjemah" to arrayOf(
                 "Bab Badal",
-                "Apabila ada isim atau fi’il jatuh setalah lafadz yang sama, dan hukum untuk yang kedua, serta tidak ada huruf ‘athaf",
+                "Apabila ada isim atau fi’il jatuh setalah lafadz yang sama, dan hukum untuk yang kedua, serta tidak ada huruf ‘athof",
                 "Maka i’robnya jadikan seperti lafadz yang pertama dan namakan badal",
                 "Badal itu dibagi menjadi lima, yaitu Badal kul minal kul, Badal Ba’dh minal kul, Badal isytimal, Badal Gholad, dan Badal idhrab",
                 "Adapun contoh-contohnya yaitu جَاءَنِي زَيْدٌ أَخوكَ, اَكَلَ عِنْدِي رَغِيفاً نِصْفَهُ, وَقَدْ وَصَل",
@@ -706,7 +706,7 @@ class BaitImrithi {
             "terjemah" to arrayOf(
                 "Bab Maful Li Ajlih",
                 "Nashobkanlah mashdar itu apabila ia datang untuk menjelaskan “'Ilatnya fi’il yang ada",
-                "Adapun syaratnya maful li ajlih ialah harus tunggal dengan amilnya dalam waktunya dan failnya",
+                "Adapun syaratnya maful li ajlih ialah harus tunggal dengan amilnya dalam waktunya dan fa'ilnya",
                 "Seperti ِقُمْ لِزَيْدٍ اتِّقَاءَ شَرِّه, dan وَاقٍْصِدْ عَلِيَّاً ابْتِغَاءَ بِرِّهِ"
             )
         )
@@ -768,7 +768,7 @@ class BaitImrithi {
                 "مُحَمَّدٍ وَصَحْبِهِ وَالآلِ * أَهْلِ التُّقَى وَالْعِلْمِ وَالْكَمَالِ"
             ),
             "terjemah" to arrayOf(
-                "Tentang hukumnya tiap-tiap kalimah yang ikut (yakni naat, athaf taukid dan badal) secara panjang lebar sudah diterangkan di atas",
+                "Tentang hukumnya tiap-tiap kalimah yang ikut (yakni naat, athof taukid dan badal) secara panjang lebar sudah diterangkan di atas",
                 "Ya Tuhanku, berilah karunia kepada kami maka kami akan mengikuti jalannya petunjuk, Sebab dengan itulah kami dapat naik ketingkat atas",
                 "Pada bulan Jumadil Ula, tahun 970 hijriyah",
                 "sudah selesai Nadzam yang jumlahnya ada 250, dengan mencukupi orang ingin mempelajari ilmu nahwu",

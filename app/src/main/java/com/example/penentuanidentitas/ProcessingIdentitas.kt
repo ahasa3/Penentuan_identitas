@@ -43,11 +43,6 @@ class ProcessingKalimat {
                 }
                 val panjang = kata.length
                 when{
-                    kata == "يَا" -> {
-                        identitas.add("Huruf Nida'")
-                        ciriAwal.add("None")
-                        ciriAkhir.add("None")
-                    }
                     huruf_athof["tidak_gabung"]!!.contains(kata) ->{
                         identitas.add("Huruf Athof")
                         ciriAwal.add("None")
@@ -110,244 +105,244 @@ class ProcessingKalimat {
                         ciriAkhir.add("None")
                     }
                     else -> when {                                                      //when pertama adalah mencari ciri akhir
-                        kata.substring(panjang - 2, panjang) == "ًا"-> {                   //fathah tanwin + alif (1)
+                        kata.takeLast(2) == "ًا"-> {                   //fathah tanwin + alif (1)
                             identitas.add("Isim Mufrod")
                             ciriAwal.add("None")
-                            ciriAkhir.add(kata.substring(panjang - 2, panjang))
+                            ciriAkhir.add(kata.takeLast(2))
                         }
-                        kata.substring(panjang - 1, panjang) == "ٌ" -> {                    //dhammahtain    (2)
+                        kata.takeLast(1) == "ٌ" -> {                    //dhammahtain    (2)
                             identitas.add("Isim Mufrod")
                             ciriAwal.add("None")
-                            ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                            ciriAkhir.add(kata.takeLast(1))
                         }
-                        kata.substring(panjang - 1, panjang) == "ِ" &&
-                                kata.substring(panjang - 3, panjang)!="انِ"&&
-                                kata.substring(panjang - 4, panjang) != "يْنِ" &&
+                        kata.takeLast(1) == "ِ" &&
+                                kata.takeLast(3)!="انِ"&&
+                                kata.takeLast(4) != "يْنِ" &&
                                 kata.substring(panjang - 3, panjang - 1) != "ات" &&
-                                kata.substring(panjang - 2, panjang) != "تِ" -> when {                //kasrah         (3)
+                                kata.takeLast(2) != "تِ" -> when {                //kasrah         (3)
                             kata.substring(0,2) == "ال" -> {              //when kedua adalah mencari  ciri awal
                                 identitas.add("Isim Mufrod")
                                 ciriAwal.add(kata.substring(0,2))
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                             kata.substring(0,1) == "ي" -> {
                                 identitas.add("Fi'il Mudhari'")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                             kata.substring(0,1) == "ت" -> {
                                 identitas.add("Fi'il Mudhari'")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                             else -> {
                                 identitas.add("Isim Mufrod")
                                 ciriAwal.add("None")
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                         }
-                        kata.substring(panjang - 1, panjang) == "َ" &&
-                                kata.substring(panjang - 4, panjang) != "وْنَ" &&
-                                kata.substring(panjang - 3, panjang) != "ْتَ" &&
-                                kata.substring(panjang - 4, panjang) != "يْنَ" &&
-                                kata.substring(panjang - 3, panjang) != "ْنَ" &&
-                                kata.substring(panjang - 2, panjang) != "نَ" &&
-                                kata.substring(panjang - 2, panjang) != "يَ" -> when {                 //fathah         (4)
+                        kata.takeLast(1) == "َ" &&
+                                kata.takeLast(4) != "وْنَ" &&
+                                kata.takeLast(3) != "ْتَ" &&
+                                kata.takeLast(4) != "يْنَ" &&
+                                kata.takeLast(3) != "ْنَ" &&
+                                kata.takeLast(2) != "نَ" &&
+                                kata.takeLast(2) != "يَ" -> when {                 //fathah         (4)
                             kata.substring(0,2) == "ال" -> {
                                 identitas.add("Isim Mufrod")
                                 ciriAwal.add(kata.substring(0,2))
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                             kata.substring(0,1) == "ا" -> {
                                 identitas.add("Fi'il Madhi")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                             kata.substring(0,1) == "ي" -> {
                                 identitas.add("Fi'il Mudhari'")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                             kata.substring(0,1) == "ت" -> {
                                 identitas.add("Fi'il Mudhari'")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                             else -> when(panjang){
                                 5, 6, 8 ->{
                                     identitas.add("Fi'il Madhi")
                                     ciriAwal.add("None")
-                                    ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                    ciriAkhir.add(kata.takeLast(1))
                                 }
                                 else ->{
                                     identitas.add("Isim Mufrod")
                                     ciriAwal.add("None")
-                                    ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                    ciriAkhir.add(kata.takeLast(1))
                                 }
                             }
                         }
-                        kata.substring(panjang - 1, panjang) == "ْ" -> when {                //sukun          (5)
+                        kata.takeLast(1) == "ْ" -> when {                //sukun          (5)
                             kata.substring(0,1) == "ا" -> {
                                 identitas.add("Fi'il Amr")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                             kata.substring(0,1) == "ت" -> {
                                 identitas.add("Fi'il Amr")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                             else -> {
                                 identitas.add("Fi'il Amr")
                                 ciriAwal.add("None")
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                         }
-                        kata.substring(panjang - 1, panjang) == "ا" &&
-                                kata.substring(panjang - 3, panjang) != "تَا" &&
+                        kata.takeLast(1) == "ا" &&
+                                kata.takeLast(3) != "تَا" &&
                                 kata.substring(panjang - 5, panjang) != "تُمَا" &&
-                                kata.substring(panjang - 2, panjang) != "َا" &&
-                                kata.substring(panjang - 3, panjang) != "وْا" -> when {                 //alif           (6)
+                                kata.takeLast(2) != "َا" &&
+                                kata.takeLast(3) != "وْا" -> when {                 //alif           (6)
                             kata.substring(0,1) == "ا" -> {
                                 identitas.add("Fi'il Amr")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                             else -> {
                                 identitas.add("Fi'il Madhi")
                                 ciriAwal.add("None")
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                         }
-                        kata.substring(panjang - 3, panjang) == "انِ" -> when {                   //aani        (7)
+                        kata.takeLast(3) == "انِ" -> when {                   //aani        (7)
                             kata.substring(0,2) == "ال" -> {
                                 identitas.add("Isim Tatsniyah")
                                 ciriAwal.add(kata.substring(0,2))
-                                ciriAkhir.add(kata.substring(panjang - 3, panjang))
+                                ciriAkhir.add(kata.takeLast(3))
                             }
                             kata.substring(0,1) == "ي" -> {
                                 identitas.add("Af'alul Khomsah")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 3, panjang))
+                                ciriAkhir.add(kata.takeLast(3))
                             }
                             kata.substring(0,1) == "ت" -> {
                                 identitas.add("Af'alul Khomsah")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 3, panjang))
+                                ciriAkhir.add(kata.takeLast(3))
                             }
                             else -> {
                                 identitas.add("Isim Tatsniyah")
                                 ciriAwal.add("None")
-                                ciriAkhir.add(kata.substring(panjang - 3, panjang))
+                                ciriAkhir.add(kata.takeLast(3))
                             }
                         }
-                        kata.substring(panjang - 1, panjang) == "ُ" &&
-                                kata.substring(panjang - 3, panjang) != "ْتُ" -> when {                  //dhammah    (8)
+                        kata.takeLast(1) == "ُ" &&
+                                kata.takeLast(3) != "ْتُ" -> when {                  //dhammah    (8)
                             kata.substring(0,2) == "ال" -> {
                                 identitas.add("Isim Mufrod")
                                 ciriAwal.add(kata.substring(0,2))
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                             kata.substring(0,1) == "ا" -> {
                                 identitas.add("Fi'il Mudhari'")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                             kata.substring(0,1) == "ي" -> {
                                 identitas.add("Fi'il Mudhari'")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                             kata.substring(0,1) == "ن" -> {
                                 identitas.add("Fi'il Mudhari'")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                             kata.substring(0,1) == "ت" -> {
                                 identitas.add("Fi'il Mudhari'")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                             else -> {
                                 identitas.add("Isim Mufrod")
                                 ciriAwal.add("None")
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                         }
                         kata.endsWith("ٍ") -> {                       //Kasrahtain     (9)
                             identitas.add("Isim Mufrod")
                             ciriAwal.add("None")
-                            ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                            ciriAkhir.add(kata.takeLast(1))
                         }
-                        kata.substring(panjang - 4, panjang) == "وْنَ" -> when {                   //uuna          (10)
+                        kata.takeLast(4) == "وْنَ" -> when {                   //uuna          (10)
                             kata.substring(0,2) == "ال" -> {
                                 identitas.add("Jama' Mudzakar Salim")
                                 ciriAwal.add(kata.substring(0,2))
-                                ciriAkhir.add(kata.substring(panjang - 4, panjang))
+                                ciriAkhir.add(kata.takeLast(4))
                             }
                             kata.substring(0,1) == "ا" -> {
                                 identitas.add("Fi'il Amr")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 4, panjang))
+                                ciriAkhir.add(kata.takeLast(4))
                             }
                             kata.substring(0,1) == "ي" -> {
                                 identitas.add("Af'alul Khomsah")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 4, panjang))
+                                ciriAkhir.add(kata.takeLast(4))
                             }
                             kata.substring(0,1) == "ت" -> {
                                 identitas.add("Af'alul Khomsah")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 4, panjang))
+                                ciriAkhir.add(kata.takeLast(4))
                             }
                             else -> {
                                 identitas.add("Jama' Mudzakar Salim")
                                 ciriAwal.add("None")
-                                ciriAkhir.add(kata.substring(panjang - 4, panjang))
+                                ciriAkhir.add(kata.takeLast(4))
                             }
                         }
-                        kata.substring(panjang - 3, panjang) == "ْتُ" -> {                         //sukun tu     (11)
+                        kata.takeLast(3) == "ْتُ" -> {                         //sukun tu     (11)
                             identitas.add("Fi'il Madhi")
                             ciriAwal.add("None")
-                            ciriAkhir.add(kata.substring(panjang - 3, panjang))
+                            ciriAkhir.add(kata.takeLast(3))
                         }
                         kata.substring(panjang-1, panjang) == "ً" ->{                        // Fathah Tanwin    (12)
                             identitas.add("Isim Mufrod")
                             ciriAwal.add("None")
-                            ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                            ciriAkhir.add(kata.takeLast(1))
                         }
-                        kata.substring(panjang - 3, panjang) == "ْتَ" -> {                         //sukun ta     (13)
+                        kata.takeLast(3) == "ْتَ" -> {                         //sukun ta     (13)
                             identitas.add("Fi'il Madhi")
                             ciriAwal.add("None")
-                            ciriAkhir.add(kata.substring(panjang - 3, panjang))
+                            ciriAkhir.add(kata.takeLast(3))
                         }
-                        kata.substring(panjang - 4, panjang) == "يْنَ" -> when {                     //iina        (14)
+                        kata.takeLast(4) == "يْنَ" -> when {                     //iina        (14)
                             kata.substring(0,2) == "ال" -> {
                                 identitas.add("Jama' Mudzakar Salim")
                                 ciriAwal.add(kata.substring(0,2))
-                                ciriAkhir.add(kata.substring(panjang - 4, panjang))
+                                ciriAkhir.add(kata.takeLast(4))
                             }
                             kata.substring(0,1) == "ت" -> {
                                 identitas.add("Af'alul Khomsah")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 4, panjang))
+                                ciriAkhir.add(kata.takeLast(4))
                             }
                             else -> {
                                 identitas.add("Jama' Mudzakar Salim")
                                 ciriAwal.add("None")
-                                ciriAkhir.add(kata.substring(panjang - 4, panjang))
+                                ciriAkhir.add(kata.takeLast(4))
                             }
                         }
-                        kata.substring(panjang - 4, panjang) == "يْنِ" -> when {                     //ayni        (15)
+                        kata.takeLast(4) == "يْنِ" -> when {                     //ayni        (15)
                             kata.substring(0,2) == "ال" -> {
                                 identitas.add("Isim Tatsniyah")
                                 ciriAwal.add(kata.substring(0,2))
-                                ciriAkhir.add(kata.substring(panjang - 4, panjang))
+                                ciriAkhir.add(kata.takeLast(4))
                             }
                             else -> {
                                 identitas.add("Isim Tatsniyah")
                                 ciriAwal.add("None")
-                                ciriAkhir.add(kata.substring(panjang - 4, panjang))
+                                ciriAkhir.add(kata.takeLast(4))
                             }
                         }
                         kata.substring(panjang - 3, panjang - 1) == "ات" -> when {                  //aati       (16)
@@ -362,21 +357,21 @@ class ProcessingKalimat {
                                 ciriAkhir.add(kata.substring(panjang - 3, panjang - 1))
                             }
                         }
-                        kata.substring(panjang - 2, panjang) == "تْ" -> {                           //ta sukun   (17)
+                        kata.takeLast(2) == "تْ" -> {                           //ta sukun   (17)
                             identitas.add("Fi'il Madhi")
                             ciriAwal.add("None")
-                            ciriAkhir.add(kata.substring(panjang - 2, panjang))
+                            ciriAkhir.add(kata.takeLast(2))
                         }
-                        kata.substring(panjang - 3, panjang) == "تَا" -> when {                      //taa        (18)
+                        kata.takeLast(3) == "تَا" -> when {                      //taa        (18)
                             kata.substring(0,1) == "ا" -> {
                                 identitas.add("Fi'il Amr")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 3, panjang))
+                                ciriAkhir.add(kata.takeLast(3))
                             }
                             else -> {
                                 identitas.add("Fi'il Madhi")
                                 ciriAwal.add("None")
-                                ciriAkhir.add(kata.substring(panjang - 3, panjang))
+                                ciriAkhir.add(kata.takeLast(3))
                             }
                         }
                         kata.substring(panjang - 5, panjang) == "تُمَا" -> {                        //tumaa       (19)
@@ -384,102 +379,102 @@ class ProcessingKalimat {
                             ciriAwal.add("None")
                             ciriAkhir.add(kata.substring(panjang - 5, panjang))
                         }
-                        kata.substring(panjang - 4, panjang) == "تُمْ" -> {                         //tum         (20)
+                        kata.takeLast(4) == "تُمْ" -> {                         //tum         (20)
                             identitas.add("Fi'il Madhi")
                             ciriAwal.add("None")
-                            ciriAkhir.add(kata.substring(panjang - 4, panjang))
+                            ciriAkhir.add(kata.takeLast(4))
                         }
-                        kata.substring(panjang - 2, panjang) == "تِ" -> {                           //ti         (21)
+                        kata.takeLast(2) == "تِ" -> {                           //ti         (21)
                             identitas.add("Fi'il Madhi'")
                             ciriAwal.add("None")
-                            ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                            ciriAkhir.add(kata.takeLast(1))
                         }
-                        kata.substring(panjang - 3, panjang) == "ْنَ" -> {                          //sukun na    (22)
+                        kata.takeLast(3) == "ْنَ" -> {                          //sukun na    (22)
                             identitas.add("Fi'il Madhi")
                             ciriAwal.add("None")
-                            ciriAkhir.add(kata.substring(panjang - 3, panjang))
+                            ciriAkhir.add(kata.takeLast(3))
                         }
-                        kata.substring(panjang - 4, panjang) == "ُنَّ" -> {                         //unna         (23)
+                        kata.takeLast(4) == "ُنَّ" -> {                         //unna         (23)
                             identitas.add("Fi'il Madhi")
                             ciriAwal.add("None")
-                            ciriAkhir.add(kata.substring(panjang - 4, panjang))
+                            ciriAkhir.add(kata.takeLast(4))
                         }
-                        kata.substring(panjang - 2, panjang) == "نَ" -> when {                       //na         (24)
+                        kata.takeLast(2) == "نَ" -> when {                       //na         (24)
                             kata.substring(0,1) == "ا" -> {
                                 identitas.add("Fi'il Amr")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 2, panjang))
+                                ciriAkhir.add(kata.takeLast(2))
                             }
                             kata.substring(0,1) == "ي" -> {
                                 identitas.add("Fi'il Mudhari'")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 2, panjang))
+                                ciriAkhir.add(kata.takeLast(2))
                             }
                             kata.substring(0,1) == "ت" -> {
                                 identitas.add("Fi'il Mudhari'")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 2, panjang))
+                                ciriAkhir.add(kata.takeLast(2))
                             }
                             else -> {
                                 identitas.add("Fi'il Madhi")
                                 ciriAwal.add("None")
-                                ciriAkhir.add(kata.substring(panjang - 2, panjang))
+                                ciriAkhir.add(kata.takeLast(2))
                             }
                         }
-                        kata.substring(panjang - 2, panjang) == "يَ" -> when {                       //ya         (25)
+                        kata.takeLast(2) == "يَ" -> when {                       //ya         (25)
                             kata.substring(0,1) == "ا" -> {
                                 identitas.add("Fi'il Amr")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 2, panjang))
+                                ciriAkhir.add(kata.takeLast(2))
                             }
                             else -> {
                                 identitas.add("Isim Mufrod")
                                 ciriAwal.add("None")
-                                ciriAkhir.add(kata.substring(panjang - 1, panjang))
+                                ciriAkhir.add(kata.takeLast(1))
                             }
                         }
-                        kata.substring(panjang - 3, panjang) == "ُوْ" -> {                          //uu          (26)
+                        kata.takeLast(3) == "ُوْ" -> {                          //uu          (26)
                             identitas.add("Fi'il Madhi")
                             ciriAwal.add("None")
-                            ciriAkhir.add(kata.substring(panjang - 3, panjang))
+                            ciriAkhir.add(kata.takeLast(3))
                         }
-                        kata.substring(panjang - 2, panjang) == "َا" -> when {
+                        kata.takeLast(2) == "َا" -> when {
                             kata.substring(0,1) == "ي" -> {
                                 identitas.add("Fi'il Mudhari'")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 2, panjang))
+                                ciriAkhir.add(kata.takeLast(2))
                             }
                             kata.substring(0,1) == "ت" -> {
                                 identitas.add("Fi'il Mudhari'")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 2, panjang))
+                                ciriAkhir.add(kata.takeLast(2))
                             }
                             else ->{
                                 identitas.add("Fi'il Madhi")
                                 ciriAwal.add("None")
-                                ciriAkhir.add(kata.substring(panjang - 2, panjang))
+                                ciriAkhir.add(kata.takeLast(2))
                             }
                         }
-                        kata.substring(panjang - 3, panjang) == "وْا" -> when {
+                        kata.takeLast(3) == "وْا" -> when {
                             kata.substring(0,1) == "ا" -> {
                                 identitas.add("Fi'il Amr'")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 3, panjang))
+                                ciriAkhir.add(kata.takeLast(3))
                             }
                             kata.substring(0,1) == "ي" -> {
                                 identitas.add("Af'alul Khomsah")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 3, panjang))
+                                ciriAkhir.add(kata.takeLast(3))
                             }
                             kata.substring(0,1) == "ت" -> {
                                 identitas.add("Af'alul Khomsah")
                                 ciriAwal.add(kata.substring(0,1))
-                                ciriAkhir.add(kata.substring(panjang - 3, panjang))
+                                ciriAkhir.add(kata.takeLast(3))
                             }
                             else ->{
                                 identitas.add("Fi'il Madhi")
                                 ciriAwal.add("None")
-                                ciriAkhir.add(kata.substring(panjang - 3, panjang))
+                                ciriAkhir.add(kata.takeLast(3))
                             }
                         }
                     }
@@ -627,6 +622,14 @@ class ProcessingKalimat {
                             tanda_irab.add(kata.substring(4,5))
                         }
                     }
+                    kata.takeLast(1) == "َ" || kata.takeLast(1) == "ً"->{
+                        irab.add("Jer")
+                        tanda_irab.add(kata.takeLast(1))
+                    }
+                    kata.takeLast(2) == "ًا"-> {
+                        irab.add("Jer")
+                        tanda_irab.add(kata.takeLast(2))
+                    }
                     else -> {
                         irab.add("Mabni")
                         tanda_irab.add("None")
@@ -643,24 +646,33 @@ class ProcessingKalimat {
             var fiil = false
             var fail = false
             var idhofah = false
+            var kaana = false
+            var inna = false
             for ((index, kata) in kalimat_split.withIndex()){
                 val identity = identitas[index]
                 val irab = irab_[index]
                 when {
-                    identity == "Keluarga Kaana" ||
-                            identity == "Keluarga Inna" ||
-                            identity == "Adat Istisna'" ||
-                            identity == "Huruf Nida'" -> kedudukan.add(identity)
+                    identity == "Keluarga Kaana" ->{
+                        kedudukan.add(identity)
+                        kaana = true
+                    }
+                    identity == "Keluarga Inna" ->{
+                        kedudukan.add(identity)
+                        inna = true
+                    }
+                    identity == "Adat Istisna'" -> kedudukan.add(identity)
                     identity == "Isim Dhomir" ->{
-                        kedudukan.add("Mubtada")
+                        kedudukan.add("Mubtada'")
                         mubtada = true
                     }
-                    identity == "Lafadz Taukid" -> kedudukan.add("Taukid")
-                    index != 0 && identitas[index-1] == "Huruf Nida'"-> kedudukan.add("Munada")
+                    kaana == true -> kedudukan.add("Mubtada' Kaana")
+                    inna == true -> kedudukan.add("Mubtada' Inna")
+                    index!=kalimat_split.size-1 && identitas[index+1]== "Lafadz Taukid" ->kedudukan.add("Taukid")
+                    identity == "Lafadz Taukid" -> kedudukan.add("Lafadz Taukid")
                     identity == "Fi'il Mudhari'" ||
                             identity == "Fi'il Madhi" -> when (mubtada){
                         true -> {
-                            kedudukan.add("Khabar (Fi'il)")
+                            kedudukan.add("Khobar (Fi'il)")
                             fiil = true
                         }
                         else -> {
@@ -674,12 +686,16 @@ class ProcessingKalimat {
                         fiil = true
                     }
                     irab == "Rofa'" -> when{
+                        inna == true ->{
+                            kedudukan.add("Khobar Inna")
+                            inna = false
+                        }
                         mubtada == true -> {
-                            kedudukan.add("Khabar")
+                            kedudukan.add("Khobar")
                             mubtada = false
                         }
                         fiil == true && mubtada == true ->{
-                            kedudukan.add("Khabar (Fa'il)")
+                            kedudukan.add("Khobar (Fa'il)")
                             fiil = false
                             mubtada = false
                         }
@@ -698,21 +714,25 @@ class ProcessingKalimat {
                             kedudukan.add("Na'at")
                         }
                         else ->{
-                            kedudukan.add("Mubtada")
+                            kedudukan.add("Mubtada'")
                             mubtada= true
                         }
                     }
                     identity == "Huruf Jer" ->when (mubtada){
-                        true -> kedudukan.add("Khabar")
+                        true -> kedudukan.add("Khobar")
                         else -> kedudukan.add("Tidak Diketahui")
                     }
                     irab == "Nashob" -> when{
+                        kaana == true ->{
+                            kedudukan.add("Khobar Kaana")
+                            kaana = false
+                        }
                         index!=0 && identitas[index-1]=="Keluarga Inna" ->{
-                            kedudukan.add("Mubtada")
+                            kedudukan.add("Mubtada'")
                             mubtada = true
                         }
                         index!=0 && mubtada==true ->{
-                            kedudukan.add("Khabar")
+                            kedudukan.add("Khobar")
                             mubtada = false
                         }
                         index!=0 &&
@@ -738,7 +758,7 @@ class ProcessingKalimat {
                     }
                     irab == "Jer" -> when{
                         mubtada == true ->{
-                            kedudukan.add("Khabar")
+                            kedudukan.add("Khobar")
                             mubtada = false
                         }
                         idhofah == true -> {
@@ -755,7 +775,7 @@ class ProcessingKalimat {
                         }
                         else -> kedudukan.add("Tidak diketahui")
                     }
-                    index!=0 && identitas[index-1]=="Huruf Athof" -> kedudukan.add("Mengikuti Kedudukan Sebelumnya")
+                    index!=0 && identitas[index-1]=="Huruf Athof" -> kedudukan.add("Ma'thuf 'Alaih")
                     else -> kedudukan.add("Tidak diketahui")
                 }
             }

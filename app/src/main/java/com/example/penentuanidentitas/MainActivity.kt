@@ -27,64 +27,31 @@ class MainActivity : AppCompatActivity() {
             checkHarakat(kalimat)
         }
     }
-    fun checkHarakat(kalimat:String){
-        val kalimat_clear = kalimat.trimEnd()
-        val kalimat_split = kalimat_clear.split(" ")
-        if(!kalimat_clear.contains(" ")){
-            Toast.makeText(this, "Silahkan Masukkan Kalimat!", Toast.LENGTH_LONG).show()
-        }else{
-            var harakat = true
-            for ((index,kata) in kalimat_split.withIndex()){
-                val panjang = kata.length
-                if(kata.substring(panjang - 1, panjang)== "ْ" ||
-                    kata.substring(panjang - 1, panjang)=="َ" ||
-                    kata.substring(panjang - 1, panjang)== "ِ" ||
-                    kata.substring(panjang - 1, panjang)== "ُ" ||
-                    kata.substring(panjang - 1, panjang)=="ٍ" ||
-                    kata.substring(panjang - 1, panjang)=="ٌ" ||
-                    kata.substring(panjang - 1, panjang)=="ً"||
-                    kata.substring(panjang - 2, panjang)=="ًا" ||
-                    kata.substring(panjang - 3, panjang)=="وْا" ||
-                    kata.substring(panjang - 2, panjang)=="َا"){
-                    continue
-                }else {
-                    harakat = false
-                    val katake = index+1
+    fun checkHarakat(kalimat: String) {
+        val kalimat_clear = kalimat.trim()
+        if (kalimat_clear.isNotEmpty()) {
+            val kalimat_split = kalimat_clear.split(" ")
+            val harakat = listOf("ْ","َ", "ِ", "ُ","ٍ","ٌ", "ً", "ًا", "وْا", "َا")
+            var isHarakatComplete = true
+            for ((index, kata) in kalimat_split.withIndex()) {
+                val lastChar = kata.takeLast(1)
+                val lastTwoChars = kata.takeLast(2)
+                val lastThreeChars = kata.takeLast(3)
+                if (lastChar !in harakat && lastTwoChars !in harakat && lastThreeChars !in harakat) {
+                    isHarakatComplete = false
+                    val katake = index + 1
                     Toast.makeText(this, "Kata ke $katake tidak berharakat lengkap", Toast.LENGTH_LONG).show()
+                    break
                 }
             }
-            if (harakat == true){
-                val hasil_intent = Intent(this,HasilActivity::class.java)
-                hasil_intent.putExtra("EXTRA_KALIMAT", kalimat_clear.toString())
+            if (isHarakatComplete) {
+                val hasil_intent = Intent(this, HasilActivity::class.java).apply {
+                    putExtra("EXTRA_KALIMAT", kalimat_clear)
+                }
                 startActivity(hasil_intent)
             }
+        } else {
+            Toast.makeText(this, "Silahkan Masukkan Kalimat!", Toast.LENGTH_LONG).show()
         }
     }
-//fun checkHarakat(kalimat: String) {
-//    val kalimat_clear = kalimat.trim()
-//    if (kalimat_clear.isNotEmpty()) {
-//        val kalimat_split = kalimat_clear.split(" ")
-//        val harakat = listOf("ْ", "َ", "ِ", "ُ", "ٍ", "ٌ", "ًا", "وْا", "َا")
-//        var isHarakatComplete = true
-//        for ((index, kata) in kalimat_split.withIndex()) {
-//            val lastChar = kata.takeLast(1)
-//            val lastTwoChars = kata.takeLast(2)
-//            val lastThreeChars = kata.takeLast(3)
-//            if (lastChar !in harakat && lastTwoChars !in harakat && lastThreeChars !in harakat) {
-//                isHarakatComplete = false
-//                val katake = index + 1
-//                Toast.makeText(this, "Kata ke $katake tidak berharakat lengkap", Toast.LENGTH_LONG).show()
-//                break
-//            }
-//        }
-//        if (isHarakatComplete) {
-//            val hasil_intent = Intent(this, HasilActivity::class.java).apply {
-//                putExtra("EXTRA_KALIMAT", kalimat_clear)
-//            }
-//            startActivity(hasil_intent)
-//        }
-//    } else {
-//        Toast.makeText(this, "Silahkan Masukkan Kalimat!", Toast.LENGTH_LONG).show()
-//    }
-//}
 }

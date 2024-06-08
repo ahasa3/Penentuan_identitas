@@ -28,44 +28,51 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:fontFamily="@font/arabic"
             tools:ignore="MissingConstraints" />
         <TextView
             android:id="@+id/text_view_hasil_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:fontFamily="@font/arabic"
             tools:ignore="MissingConstraints" />
         <TextView
             android:id="@+id/text_view_hasil_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:fontFamily="@font/arabic"
             tools:ignore="MissingConstraints" />
         <TextView
             android:id="@+id/text_view_hasil_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:fontFamily="@font/arabic"
             tools:ignore="MissingConstraints" />
         <TextView
             android:id="@+id/text_view_hasil_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:fontFamily="@font/arabic"
             tools:ignore="MissingConstraints" />
         <TextView
             android:id="@+id/text_view_hasil_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:fontFamily="@font/arabic"
             tools:ignore="MissingConstraints" />
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="IDENTITAS"
+        android:text="JENIS KATA"
         android:textSize="16sp"
+        android:textStyle="bold"
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"/>
 
@@ -118,6 +125,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="IRAB"
+        android:textStyle="bold"
         android:textSize="16sp"
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"/>
@@ -171,6 +179,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="KEDUDUKAN"
+        android:textStyle="bold"
         android:textSize="16sp"
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"/>

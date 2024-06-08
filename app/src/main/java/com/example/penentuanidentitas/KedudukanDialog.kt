@@ -53,36 +53,42 @@ class KedudukanDialog: BottomSheetDialogFragment(){
     fun dialogView(){
         val isi_text = arguments?.getStringArrayList(isi_dialog)
         val kata = isi_text?.get(0)
-        val identitas = isi_text?.get(1)
+        val identitas = isi_text!!.get(1)
         val irab = isi_text?.get(2)
         val tanda_irab = isi_text?.get(3)
-        val kedudukan = isi_text?.get(4)
+        val kedudukan = isi_text!!.get(4)
+        val identitasSebelumnya = isi_text?.get(5)
 
         binding.arab2.text = kata
         var text:String
         when(kedudukan){
-            "Mubtada" -> when{
-                identitas == "Isim Dhomir" -> text = "Menjadi Mubtada karena lafadz $kata merupakan $identitas"
-                else -> text = "Menjadi Mubtada karena lafadz $kata beri'rob $irab dan sepi dari amil lafdzi"
+            "Mubtada'" -> when{
+                identitas == "Isim Dhomir" -> text = "Menjadi Mubtada karena lafadz $kata merupakan $identitas.\nDalilnya:"
+                else -> text = "Menjadi Mubtada karena lafadz $kata beri'rob $irab dan sepi dari amil lafdzi.\nDalilnya:"
             }
-            "Khabar (Fi'il)" -> text = "Menjadi Khabar (Fi'il) karena lafadz $kata beri'rob $irab dan berada setelah mubtada"
-            "Khabar" -> text = "Menjadi Khabar karena lafadz $kata beri'rob $irab dan jatuh setelah mubtada"
-            "Khabar (Fa'il)" -> text = "Menjadi Khabar (Fa'il) karena lafadz $kata beri'rob $irab dan berada setelah Fi'il"
-            "Keluarga Kaana", "Keluarga Inna", "Adat Istisna'", "Huruf Nida" -> text = identitas!!
-            "Taukid" -> text = "Menjadi Taukid karena lafadz $kata merupakan $identitas"
-            "Munada" -> text = "Menjadi Munada karena lafadz $kata didahului oleh Huruf Nida'"
-            "Fi'il" -> text = "Menjadi Fi'il karena lafadz $kata merupakan $identitas"
-            "Fa'il" -> text = "Menjadi Fa'il karena lafadz $kata merupakan $identitas dan berada setelah Fi'il"
-            "Mudhof" -> text = "Menjadi Mudhof karena lafadz $kata tidak diberi tanwin dan tidak di ma’rifatkan dengan ال(Al)"
-            "Mudhof Ilaih" -> text = "Menjadi Mudhof Ilaih karena lafadz $kata beri'rob Jer dan berada setelah mudhof"
-            "Na'at" -> text = "Menjadi Na'at karena lafadz $kata mensifati kata sebelumnya dan memiliki I'rob yang sama dengan kata sebelumnya"
-            "Mustasna'" -> text = "Menjadi Mustasna' karena lafadz $kata jatuh setelah Adat / Alat Istisna'"
-            else -> text = "Mohon Maaf, untuk saat ini aplikasi kami belum bisa mengidentifikasi kedudukan lafadz tersebut"
+            "Mubtada' Kaana" -> text = "Menjadi Mubtadanya Kaana karena lafadz $kata berada setelah salah satu dari Keluarga Kaana.\nDalilnya:"
+            "Mubtada' Inna" -> text = "Menjadi Mubtadanya Inna karena lafadz $kata berada setelah salah satu dari Keluarga Inna.\nDalilnya:"
+            "Khobar Kaana" -> text = "Menjadi Khabarnya Kaana karena lafadz $kata beri'rob $irab dan berada setelah mubtada kaana.\nDalilnya:"
+            "Khobar Inna" -> text = "Menjadi Khabarnya Inna karena lafadz $kata beri'rob $irab dan berada setelah mubtada inna.\nDalilnya:"
+            "Khobar (Fi'il)" -> text = "Menjadi Khabar (Fi'il) karena lafadz $kata beri'rob $irab dan berada setelah mubtada.\nDalilnya:"
+            "Khobar" -> text = "Menjadi Khabar karena lafadz $kata beri'rob $irab dan jatuh setelah mubtada.\nDalilnya:"
+            "Khabar (Fa'il)" -> text = "Menjadi Khabar (Fa'il) karena lafadz $kata beri'rob $irab dan berada setelah Fi'il.\nDalilnya:"
+            "Keluarga Kaana", "Keluarga Inna", "Adat Istisna'","Lafadz Taukid" -> text = "$identitas.\nDalilnya:"
+            "Taukid" -> text = "Menjadi Taukid karena lafadz $kata berada sebelum Lafadz Taukid.\nDalilnya:"
+            "Fi'il" -> text = "Menjadi Fi'il karena lafadz $kata merupakan $identitas.\nDalilnya:"
+            "Fa'il" -> text = "Menjadi Fa'il karena lafadz $kata merupakan $identitas dan berada setelah Fi'il.\nDalilnya:"
+            "Mudhof" -> text = "Menjadi Mudhof karena lafadz $kata tidak diberi tanwin dan tidak di ma’rifatkan dengan ال(Al).\nDalilnya:"
+            "Mudhof Ilaih" -> text = "Menjadi Mudhof Ilaih karena lafadz $kata beri'rob Jer dan berada setelah mudhof.\nDalilnya"
+            "Na'at" -> text = "Menjadi Na'at karena lafadz $kata mensifati kata sebelumnya dan memiliki I'rob yang sama dengan kata sebelumnya.\nDalilnya:"
+            "Mustasna'" -> text = "Menjadi Mustasna' karena lafadz $kata jatuh setelah Adat / Alat Istisna'.\nDalilnya:"
+            "Ma'thuf 'Alaih"-> text = "Menjadi Ma'thuf 'Alaih karena lafadz $kata berada setelah Huruf 'Athof.\nDalilnya:"
+            else -> text = "Mohon Maaf, untuk saat ini aplikasi kami belum bisa mengidentifikasi kedudukan lafadz tersebut."
         }
-        binding.keterangan2.text = text
+        val isi:MutableList<String> = DalilKeterangan.dalilKedudukan(text,kedudukan,identitas)
+        binding.textViewKeterangan2.text= isi.joinToString(separator = "\n")
         binding.irab2.setOnClickListener{
             dismiss()
-            val isiDialog = listOf(kata!!,identitas!!,irab!!,tanda_irab!!,kedudukan!!)
+            val isiDialog = listOf(kata!!,identitas!!,irab!!,tanda_irab!!,kedudukan!!,identitasSebelumnya!!)
             val previous = HasilDialog.newInstance(isiDialog)
             previous.show(parentFragmentManager, HasilDialog.TAG)
         }

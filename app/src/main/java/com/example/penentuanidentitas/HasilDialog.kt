@@ -8,7 +8,8 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.example.penentuanidentitas.databinding.DialogHasilBinding
-import android.graphics.drawable.GradientDrawable
+import android.widget.ArrayAdapter
+
 class HasilDialog: BottomSheetDialogFragment(){
     private lateinit var binding: DialogHasilBinding
     override fun onCreateView(
@@ -51,28 +52,35 @@ class HasilDialog: BottomSheetDialogFragment(){
     }
     fun dialogView(){
         val isi_text = arguments?.getStringArrayList(isi_dialog)
-        val kata = isi_text?.get(0)
-        val identitas = isi_text?.get(1)
-        val irab = isi_text?.get(2)
+        val kata = isi_text!!.get(0)
+        val identitas = isi_text!!.get(1)
+        val irab = isi_text!!.get(2)
         val tanda_irab = isi_text!!.get(3)
         val kedudukan = isi_text.get(4)
-        val kataSebelumnya = isi_text.get(5)
+        val identitasSebelumnya = isi_text.get(5)
         binding.arab.text = kata
+        val tandaIrab = tandaIrabText(tanda_irab)
         var text:String
-        when(irab){
-            "Mabni" -> when(identitas){
-                "Fi'il Mudhari'" -> text = "Hukumnya $identitas karena merupakan $identitas yang diakhiri dengan $tanda_irab"
-                else -> text = "Hukumnya Mabni, karena merupakan $identitas"
+        when{
+            kata.takeLast(1) == "َ" && irab=="Jer"-> text = "Irabnya $irab karena merupakan $identitas dan isim ghairu munsharif.\nDalilnya:"
+            kedudukan=="Mubtada' Kaana" -> text = "Hukumnya $irab karena merupakan $identitas dan berada setelah Keluarga Kaana.\nDalilnya:"
+            kedudukan=="Khobar Kaana" -> text = "Hukumnya $irab karena merupakan khobar dan berada setelah Keluarga Kaana.\nDalilnya:"
+            kedudukan=="Mubtada' Inna" -> text = "Hukumnya $irab karena merupakan $identitas dan berada setelah Keluarga Inna.\nDalilnya:"
+            kedudukan=="Khobar Inna" -> text = "Hukumnya $irab karena merupakan khobar dan berada setelah Keluarga Inna.\nDalilnya:"
+            irab=="Mabni" -> when(identitas){
+                "Fi'il Mudhari'" -> text = "Hukumnya $identitas karena merupakan $identitas yang diakhiri dengan $tandaIrab.\nDalilnya:"
+                "Huruf Jer", "Huruf Athof", "Amil Nawashib", "Amil Jawazim", "Adat Istisna'", "Huruf Nida'","Isim Dhomir", "Fi'il Madhi", "Fi'il Amr" ->text = "Hukumnya Mabni, karena merupakan $identitas.\nDalilnya:"
+                else -> text = "Hukumnya Mabni, karena merupakan $identitas."
             }
-            else -> when(kedudukan){
-                "Mustasna'" -> text = "I'robnya $irab karena berada setelah Adat atau Alat Istisna'"
-                else -> text = "Irabnya $irab ditandai dengan $tanda_irab  karena $identitas"
-            }
+            tanda_irab == "Membuang Huruf 'Illat" -> text = "Irabnya $irab karena merupakan $identitas mu'tal akhir.\nDalilnya:"
+            kedudukan=="Mustasna'" -> text = "I'robnya $irab karena berada setelah Adat atau Alat Istisna'.\nDalilnya:"
+            else -> text = "Irabnya $irab ditandai dengan $tandaIrab karena $identitas.\nDalilnya:"
         }
-        binding.keterangan.text = text
+        val isi:MutableList<String> = DalilKeterangan.dalilIrab(text,irab,identitas,tanda_irab,identitasSebelumnya,kedudukan)
+        binding.textViewKketerangan.text= isi.joinToString(separator = "\n")
         binding.kedudukan.setOnClickListener{
             dismiss()
-            val isiDialog = listOf(kata!!,identitas!!,irab!!,tanda_irab!!,kedudukan!!)
+            val isiDialog = listOf(kata!!,identitas!!,irab!!,tanda_irab!!,kedudukan!!,identitasSebelumnya!!)
             val previous = KedudukanDialog.intanceBaru(isiDialog)
             previous.show(parentFragmentManager, KedudukanDialog.TAG)
         }
