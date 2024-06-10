@@ -26,8 +26,8 @@ class DalilKeterangan {
                 identitas=="Fi'il Amr"->{
                             ket = mutableListOf(
                                 text,
-                                BaitImrithi.babIrob["arab"]!!.get(8),
-                                BaitImrithi.babIrob["terjemah"]!!.get(8)
+                                BaitImrithi.babIrob["arab"]!!.get(5),
+                                BaitImrithi.babIrob["terjemah"]!!.get(5)
                             )
                         }
                 kedudukan=="Mubtada Kaana" ||

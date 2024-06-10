@@ -1,11 +1,15 @@
 package com.example.penentuanidentitas
 
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.penentuanidentitas.databinding.ActivityHasilBinding
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 
 class HasilActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHasilBinding
@@ -32,37 +36,37 @@ class HasilActivity : AppCompatActivity() {
                     binding.textViewHasil6.text = text
                     binding.textViewHasil6.setTextColor(getColor(R.color.index6))
                     binding.textViewHasil6.setTextSize(30f)
-                    binding.textViewHasil6.setPadding(8,0,8,0)
+                    binding.textViewHasil6.setPadding(10,5,10,5)
                 }
                 1->{
                     binding.textViewHasil5.text = text
                     binding.textViewHasil5.setTextColor(getColor(R.color.index5))
                     binding.textViewHasil5.setTextSize(30f)
-                    binding.textViewHasil5.setPadding(8,0,8,0)
+                    binding.textViewHasil5.setPadding(10,5,10,5)
                 }
                 2->{
                     binding.textViewHasil4.text = text
                     binding.textViewHasil4.setTextColor(getColor(R.color.index4))
                     binding.textViewHasil4.setTextSize(30f)
-                    binding.textViewHasil4.setPadding(8,0,8,0)
+                    binding.textViewHasil4.setPadding(10,5,10,5)
                 }
                 3->{
                     binding.textViewHasil3.text = text
                     binding.textViewHasil3.setTextColor(getColor(R.color.index3))
                     binding.textViewHasil3.setTextSize(30f)
-                    binding.textViewHasil3.setPadding(8,0,8,0)
+                    binding.textViewHasil3.setPadding(10,5,10,5)
                 }
                 4->{
                     binding.textViewHasil2.text = text
                     binding.textViewHasil2.setTextColor(getColor(R.color.index2))
                     binding.textViewHasil2.setTextSize(30f)
-                    binding.textViewHasil2.setPadding(8,0,8,0)
+                    binding.textViewHasil2.setPadding(10,5,10,5)
                 }
                 5->{
                     binding.textViewHasil1.text = text
                     binding.textViewHasil1.setTextColor(getColor(R.color.index1))
                     binding.textViewHasil1.setTextSize(30f)
-                    binding.textViewHasil1.setPadding(8,0,8,0)
+                    binding.textViewHasil1.setPadding(10,5,10,5)
                 }
             }
         }
@@ -71,36 +75,38 @@ class HasilActivity : AppCompatActivity() {
             when (index){
                 0->{
                     binding.textViewIdentitas6.text = kata
-                    binding.textViewIdentitas6.setBackgroundColor(getColor(R.color.index6))
-                    binding.textViewIdentitas6.setTextSize(18f)
-                    binding.textViewIdentitas6.setPadding(8,0,8,0)
+                    binding.textViewIdentitas6.setTextSize(20f)
+                    binding.textViewIdentitas6.setPadding(10,5,10,5)
+                    val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kanan)
+                    DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index6))
+                    binding.textViewIdentitas6.background = drawable
                 }
                 1->{
                     binding.textViewIdentitas5.text = kata
+                    binding.textViewIdentitas5.setTextSize(20f)
+                    binding.textViewIdentitas5.setPadding(10,5,10,5)
                     binding.textViewIdentitas5.setBackgroundColor(getColor(R.color.index5))
-                    binding.textViewIdentitas5.setTextSize(18f)
-                    binding.textViewIdentitas5.setPadding(8,0,8,0)
                 }
                 2->{
                     binding.textViewIdentitas4.text = kata
+                    binding.textViewIdentitas4.setTextSize(20f)
+                    binding.textViewIdentitas4.setPadding(10,5,10,5)
                     binding.textViewIdentitas4.setBackgroundColor(getColor(R.color.index4))
-                    binding.textViewIdentitas4.setTextSize(18f)
-                    binding.textViewIdentitas4.setPadding(8,0,8,0)
                 }3->{
                     binding.textViewIdentitas3.text = kata
+                    binding.textViewIdentitas3.setTextSize(20f)
+                    binding.textViewIdentitas3.setPadding(10,5,10,5)
                     binding.textViewIdentitas3.setBackgroundColor(getColor(R.color.index3))
-                    binding.textViewIdentitas3.setTextSize(18f)
-                    binding.textViewIdentitas3.setPadding(8,0,8,0)
                 }4->{
                     binding.textViewIdentitas2.text = kata
+                    binding.textViewIdentitas2.setTextSize(20f)
+                    binding.textViewIdentitas2.setPadding(10,5,10,5)
                     binding.textViewIdentitas2.setBackgroundColor(getColor(R.color.index2))
-                    binding.textViewIdentitas2.setTextSize(18f)
-                    binding.textViewIdentitas2.setPadding(8,0,8,0)
                 }5->{
                     binding.textViewIdentitas1.text = kata
+                    binding.textViewIdentitas1.setTextSize(20f)
+                    binding.textViewIdentitas1.setPadding(10,5,10,5)
                     binding.textViewIdentitas1.setBackgroundColor(getColor(R.color.index1))
-                    binding.textViewIdentitas1.setTextSize(18f)
-                    binding.textViewIdentitas1.setPadding(8,0,8,0)
                 }
             }
         }
@@ -116,39 +122,41 @@ class HasilActivity : AppCompatActivity() {
             when (index){
                 0->{
                     binding.textViewIrab6.text = irab_
-                    binding.textViewIrab6.setBackgroundColor(getColor(R.color.index6))
                     binding.textViewIrab6.setTextSize(20f)
-                    binding.textViewIrab6.setPadding(8,0,8,0)
+                    binding.textViewIrab6.setPadding(10,5,10,5)
+                    val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kanan)
+                    DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index6))
+                    binding.textViewIrab6.background = drawable
                 }
                 1->{
                     binding.textViewIrab5.text = irab_
                     binding.textViewIrab5.setBackgroundColor(getColor(R.color.index5))
                     binding.textViewIrab5.setTextSize(20f)
-                    binding.textViewIrab5.setPadding(8,0,8,0)
+                    binding.textViewIrab5.setPadding(10,5,10,5)
                 }
                 2->{
                     binding.textViewIrab4.text = irab_
                     binding.textViewIrab4.setBackgroundColor(getColor(R.color.index4))
                     binding.textViewIrab4.setTextSize(20f)
-                    binding.textViewIrab4.setPadding(8,0,8,0)
+                    binding.textViewIrab4.setPadding(10,5,10,5)
                 }
                 3->{
                     binding.textViewIrab3.text = irab_
                     binding.textViewIrab3.setBackgroundColor(getColor(R.color.index3))
                     binding.textViewIrab3.setTextSize(20f)
-                    binding.textViewIrab3.setPadding(8,0,8,0)
+                    binding.textViewIrab3.setPadding(10,5,10,5)
                 }
                 4->{
                     binding.textViewIrab2.text = irab_
                     binding.textViewIrab2.setBackgroundColor(getColor(R.color.index2))
                     binding.textViewIrab2.setTextSize(20f)
-                    binding.textViewIrab2.setPadding(8,0,8,0)
+                    binding.textViewIrab2.setPadding(10,5,10,5)
                 }
                 5->{
                     binding.textViewIrab1.text = irab_
                     binding.textViewIrab1.setBackgroundColor(getColor(R.color.index1))
                     binding.textViewIrab1.setTextSize(20f)
-                    binding.textViewIrab1.setPadding(8,0,8,0)
+                    binding.textViewIrab1.setPadding(10,5,10,5)
                 }
             }
         }
@@ -165,39 +173,123 @@ class HasilActivity : AppCompatActivity() {
                 0->{
                     binding.textViewKedudukan6.text = posisi
                     binding.textViewKedudukan6.setBackgroundColor(getColor(R.color.index6))
-                    binding.textViewKedudukan6.setTextSize(18f)
-                    binding.textViewKedudukan6.setPadding(8,0,8,0)
+                    binding.textViewKedudukan6.setTextSize(20f)
+                    binding.textViewKedudukan6.setPadding(10,5,10,5)
+                    val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kanan)
+                    DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index6))
+                    binding.textViewKedudukan6.background = drawable
                 }
                 1->{
                     binding.textViewKedudukan5.text = posisi
                     binding.textViewKedudukan5.setBackgroundColor(getColor(R.color.index5))
-                    binding.textViewKedudukan5.setTextSize(18f)
-                    binding.textViewKedudukan5.setPadding(8,0,8,0)
+                    binding.textViewKedudukan5.setTextSize(20f)
+                    binding.textViewKedudukan5.setPadding(10,5,10,5)
                 }
                 2->{
                     binding.textViewKedudukan4.text = posisi
                     binding.textViewKedudukan4.setBackgroundColor(getColor(R.color.index4))
-                    binding.textViewKedudukan4.setTextSize(18f)
-                    binding.textViewKedudukan4.setPadding(8,0,8,0)
+                    binding.textViewKedudukan4.setTextSize(20f)
+                    binding.textViewKedudukan4.setPadding(10,5,10,5)
                 }
                 3->{
                     binding.textViewKedudukan3.text = posisi
                     binding.textViewKedudukan3.setBackgroundColor(getColor(R.color.index3))
-                    binding.textViewKedudukan3.setTextSize(18f)
-                    binding.textViewKedudukan3.setPadding(8,0,8,0)
+                    binding.textViewKedudukan3.setTextSize(20f)
+                    binding.textViewKedudukan3.setPadding(10,5,10,5)
                 }
                 4->{
                     binding.textViewKedudukan2.text = posisi
                     binding.textViewKedudukan2.setBackgroundColor(getColor(R.color.index2))
-                    binding.textViewKedudukan2.setTextSize(18f)
-                    binding.textViewKedudukan2.setPadding(8,0,8,0)
+                    binding.textViewKedudukan2.setTextSize(20f)
+                    binding.textViewKedudukan2.setPadding(10,5,10,5)
                 }
                 5->{
                     binding.textViewKedudukan1.text = posisi
                     binding.textViewKedudukan1.setBackgroundColor(getColor(R.color.index1))
-                    binding.textViewKedudukan1.setTextSize(18f)
-                    binding.textViewKedudukan1.setPadding(8,0,8,0)
+                    binding.textViewKedudukan1.setTextSize(20f)
+                    binding.textViewKedudukan1.setPadding(10,5,10,5)
                 }
+            }
+        }
+        when(kalimat_split.size){
+            2 ->{
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index5))
+                binding.textViewIdentitas5.background = drawable
+            }
+            3 -> {
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index4))
+                binding.textViewIdentitas4.background = drawable
+            }
+            4 -> {
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index3))
+                binding.textViewIdentitas3.background = drawable
+            }
+            5 -> {
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index2))
+                binding.textViewIdentitas2.background = drawable
+            }
+            6 -> {
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index1))
+                binding.textViewIdentitas1.background = drawable
+            }
+        }
+        when(kalimat_split.size){
+            2 -> {
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index5))
+                binding.textViewIrab5.background = drawable
+            }
+            3 -> {
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index4))
+                binding.textViewIrab4.background = drawable
+            }
+            4 -> {
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index3))
+                binding.textViewIrab3.background = drawable
+            }
+            5 -> {
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index2))
+                binding.textViewIrab2.background = drawable
+            }
+            6 -> {
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index1))
+                binding.textViewIrab1.background = drawable
+            }
+        }
+        when(kalimat_split.size){
+            2 ->{
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index5))
+                binding.textViewKedudukan5.background = drawable
+            }
+            3 -> {
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index4))
+                binding.textViewKedudukan4.background = drawable
+            }
+            4 -> {
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index3))
+                binding.textViewKedudukan3.background = drawable
+            }
+            5 -> {
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index2))
+                binding.textViewKedudukan2.background = drawable
+            }
+            6 -> {
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index1))
+                binding.textViewKedudukan1.background = drawable
             }
         }
     }
