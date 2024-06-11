@@ -737,11 +737,6 @@ class ProcessingKalimat {
                         }
                         index!=0 &&
                                 identitas[index-1]=="Adat Istisna'" -> kedudukan.add("Mustasna'")
-                        fail == true &&
-                                kata.takeLast(1) == "َ" ->{
-                            kedudukan.add("Fa'il")
-                            idhofah = true
-                        }
                         fail == true || fiil == true -> {
                             kedudukan.add("Maf'ul Bih")
                             fail = false

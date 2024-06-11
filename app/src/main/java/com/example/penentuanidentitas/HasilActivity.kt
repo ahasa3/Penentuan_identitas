@@ -167,7 +167,7 @@ class HasilActivity : AppCompatActivity() {
                     "Mabni" -> posisi = kedudukan[index-2]
                     else-> posisi = kedudukan[index-1]
                 }
-                else -> posisi = posisi__.replace(" ","\n")
+                else -> posisi = posisi__
             }
             when(index){
                 0->{
