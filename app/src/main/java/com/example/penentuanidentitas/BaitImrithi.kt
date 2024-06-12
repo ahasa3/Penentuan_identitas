@@ -322,7 +322,7 @@ class BaitImrithi {
                 "Dan selain yang dua macam ini bisa diketahui dengan qiyas, Seperti لَمْ يٍقُمْ إِلاَّ أَنَا أَوْ أَنْتُم"
             )
         )
-        val naibulFail = mapOf(
+        val babNaibulFail = mapOf(
             "arab" to arrayOf(
                 "بَابُ نَائِبِ الْفَاعِلِ",
                 "أَقِمْ مَقَامَ الْفَاعِلِ الَّذِي حُذِفْ * مَفْعُولَهُ فِي كُلِّ مَالَهُ عُرِفْ",
@@ -542,7 +542,7 @@ class BaitImrithi {
                 "Macam-macam semua bagian telah tercakup dalam dua belah"
             )
         )
-        val masdar = mapOf(
+        val babMasdar = mapOf(
             "arab" to arrayOf(
                 "بَابُ المَصْدَرِ",
                 "وَإِنْ تُرِدْ تَصْرِيفَ نَحْوِ قامَا * فَقُلْ يَقُومُ ثُمَّ قُلْ قِيَامَا",
@@ -560,7 +560,7 @@ class BaitImrithi {
                 "Lafadz قُمْ قِيَاماً merupakan contoh yang pertama (yakni mashdar lafzhi), Sedang lafadz قُمْ وُقُوفا merupakan contoh yang kedua (yakni mashdar ma’nawi)."
             )
         )
-        val dhorof = mapOf(
+        val babZhorof = mapOf(
             "arab" to arrayOf(
                 "بَاب الظَرْفِ",
                 "هُوَ اسْمُ وَقْتٍ أَوْ مَكَانٍ انْتَصَبْ * كُلُّ عَلَى تَقْدِيرِ فِي عِنْدَ العَرَبْ",

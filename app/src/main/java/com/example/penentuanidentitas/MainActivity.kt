@@ -26,6 +26,14 @@ class MainActivity : AppCompatActivity() {
             val kalimat = binding.textInputUser.text.toString()
             checkHarakat(kalimat)
         }
+        binding.imageViewInfo.setOnClickListener {
+            val info_intent = Intent(this, aboutActivity::class.java)
+            startActivity(info_intent)
+        }
+        binding.imageViewBook.setOnClickListener {
+            val book_intent = Intent(this, KitabViewActivity::class.java)
+            startActivity(book_intent)
+        }
     }
     fun checkHarakat(kalimat: String) {
         val kalimat_clear = kalimat.trim()

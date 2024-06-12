@@ -8,7 +8,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.example.penentuanidentitas.databinding.DialogKedudukanBinding
-import android.graphics.drawable.GradientDrawable
 class KedudukanDialog: BottomSheetDialogFragment(){
     private lateinit var binding: DialogKedudukanBinding
     override fun onCreateView(

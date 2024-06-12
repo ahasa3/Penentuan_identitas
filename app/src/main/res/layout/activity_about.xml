@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".aboutActivity">
+
+    <TextView
+        android:id="@+id/aboutTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Tentang Aplikasi"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="20dp" />
+
+    <TextView
+        android:id="@+id/aboutText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="5dp"
+        android:text="Aplikasi ini memproses kalimat bahasa arab dengan menggunakan Algoritma Best First Search yang berpedoman pada Kitab Imrithi.\n
+\nBerikut merupakan bab - bab dalam kitab Imrithi yang digunakan dalam aplikasi ini :\n
+1. Bab Kalam\n
+2. Bab I'rob\n
+3. Bab Tanda I'rob Rofa'\n
+4. Bab Tanda I'rob Nashob\n
+5. Bab Tanda I'rob Jer\n
+6. Bab Tanda I'rob Jazm\n
+7. Fasal\n
+8. Bab Fi'il\n
+9. Bab I'robnya Fi'il Mudhari'\n
+10. Bab Isim - isim yang Rofa'\n
+11. Bab Mubtada' Khobar\n
+12. Bab Kaana dan Saudaranya\n
+13. Bab Inna dan Saudaranya\n
+14. Bab Na'at\n
+15. Bab 'Athof\n
+16. Bab Taukid\n
+17. Bab Isim - isim yang Nashob\n
+18. Bab Istisna'\n
+19. Bab Isim - isim yang Jer\n
+20. Bab Idhofah"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/aboutTitle"
+        tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>

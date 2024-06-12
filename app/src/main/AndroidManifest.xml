@@ -7,16 +7,26 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Penentuan I&apos;rob"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PenentuanIdentitas"
         tools:targetApi="31">
         <activity
+            android:name=".KitabViewActivity"
+            android:exported="false"
+            android:label="Kitab View Activity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".aboutActivity"
+            android:exported="false"
+            android:label="About Activity"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".HasilActivity"
             android:exported="false"
             android:label="Hasil Activity"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
