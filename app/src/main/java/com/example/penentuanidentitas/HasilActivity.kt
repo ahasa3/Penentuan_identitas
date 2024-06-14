@@ -34,39 +34,44 @@ class HasilActivity : AppCompatActivity() {
             when(index){
                 0->{
                     binding.textViewHasil6.text = text
-                    binding.textViewHasil6.setTextColor(getColor(R.color.index6))
                     binding.textViewHasil6.setTextSize(30f)
                     binding.textViewHasil6.setPadding(10,5,10,5)
+                    val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kanan)
+                    DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index6))
+                    binding.textViewHasil6.background = drawable
                 }
                 1->{
                     binding.textViewHasil5.text = text
-                    binding.textViewHasil5.setTextColor(getColor(R.color.index5))
                     binding.textViewHasil5.setTextSize(30f)
                     binding.textViewHasil5.setPadding(10,5,10,5)
+                    binding.textViewIdentitas5.setBackgroundColor(getColor(R.color.index5))
+
                 }
                 2->{
                     binding.textViewHasil4.text = text
-                    binding.textViewHasil4.setTextColor(getColor(R.color.index4))
                     binding.textViewHasil4.setTextSize(30f)
                     binding.textViewHasil4.setPadding(10,5,10,5)
+                    binding.textViewIdentitas4.setBackgroundColor(getColor(R.color.index4))
                 }
                 3->{
                     binding.textViewHasil3.text = text
-                    binding.textViewHasil3.setTextColor(getColor(R.color.index3))
                     binding.textViewHasil3.setTextSize(30f)
                     binding.textViewHasil3.setPadding(10,5,10,5)
+                    binding.textViewIdentitas3.setBackgroundColor(getColor(R.color.index3))
                 }
                 4->{
                     binding.textViewHasil2.text = text
-                    binding.textViewHasil2.setTextColor(getColor(R.color.index2))
                     binding.textViewHasil2.setTextSize(30f)
                     binding.textViewHasil2.setPadding(10,5,10,5)
+                    binding.textViewIdentitas2.setBackgroundColor(getColor(R.color.index2))
                 }
                 5->{
                     binding.textViewHasil1.text = text
-                    binding.textViewHasil1.setTextColor(getColor(R.color.index1))
                     binding.textViewHasil1.setTextSize(30f)
                     binding.textViewHasil1.setPadding(10,5,10,5)
+                    val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                    DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index1))
+                    binding.textViewHasil1.background = drawable
                 }
             }
         }
