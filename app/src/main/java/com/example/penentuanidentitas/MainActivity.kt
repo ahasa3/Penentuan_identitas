@@ -52,7 +52,13 @@ class MainActivity : AppCompatActivity() {
                     break
                 }
             }
-            if (isHarakatComplete) {
+            if (kalimat_split.size < 2){
+                Toast.makeText(this, "Kalimat harus lebih dari 2 kata", Toast.LENGTH_LONG).show()
+            }
+            else if (kalimat_split.size > 6) {
+                Toast.makeText(this, "Kalimat tidak boleh lebih dari 6 kata", Toast.LENGTH_LONG).show()
+            }
+            else if (isHarakatComplete) {
                 val hasil_intent = Intent(this, HasilActivity::class.java).apply {
                     putExtra("EXTRA_KALIMAT", kalimat_clear)
                 }

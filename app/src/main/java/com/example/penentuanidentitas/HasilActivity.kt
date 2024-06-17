@@ -44,34 +44,32 @@ class HasilActivity : AppCompatActivity() {
                     binding.textViewHasil5.text = text
                     binding.textViewHasil5.setTextSize(30f)
                     binding.textViewHasil5.setPadding(10,5,10,5)
-                    binding.textViewIdentitas5.setBackgroundColor(getColor(R.color.index5))
+                    binding.textViewHasil5.setBackgroundColor(getColor(R.color.index5))
 
                 }
                 2->{
                     binding.textViewHasil4.text = text
                     binding.textViewHasil4.setTextSize(30f)
                     binding.textViewHasil4.setPadding(10,5,10,5)
-                    binding.textViewIdentitas4.setBackgroundColor(getColor(R.color.index4))
+                    binding.textViewHasil4.setBackgroundColor(getColor(R.color.index4))
                 }
                 3->{
                     binding.textViewHasil3.text = text
                     binding.textViewHasil3.setTextSize(30f)
                     binding.textViewHasil3.setPadding(10,5,10,5)
-                    binding.textViewIdentitas3.setBackgroundColor(getColor(R.color.index3))
+                    binding.textViewHasil3.setBackgroundColor(getColor(R.color.index3))
                 }
                 4->{
                     binding.textViewHasil2.text = text
                     binding.textViewHasil2.setTextSize(30f)
                     binding.textViewHasil2.setPadding(10,5,10,5)
-                    binding.textViewIdentitas2.setBackgroundColor(getColor(R.color.index2))
+                    binding.textViewHasil2.setBackgroundColor(getColor(R.color.index2))
                 }
                 5->{
                     binding.textViewHasil1.text = text
                     binding.textViewHasil1.setTextSize(30f)
                     binding.textViewHasil1.setPadding(10,5,10,5)
-                    val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
-                    DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index1))
-                    binding.textViewHasil1.background = drawable
+                    binding.textViewHasil1.setBackgroundColor(getColor(R.color.index1))
                 }
             }
         }
@@ -214,6 +212,33 @@ class HasilActivity : AppCompatActivity() {
                     binding.textViewKedudukan1.setTextSize(20f)
                     binding.textViewKedudukan1.setPadding(10,5,10,5)
                 }
+            }
+        }
+        when(kalimat_split.size){
+            2 -> {
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index5))
+                binding.textViewHasil5.background = drawable
+            }
+            3 -> {
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index4))
+                binding.textViewHasil4.background = drawable
+            }
+            4 -> {
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index3))
+                binding.textViewHasil3.background = drawable
+            }
+            5 -> {
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index2))
+                binding.textViewHasil2.background = drawable
+            }
+            6 -> {
+                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
+                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index1))
+                binding.textViewHasil1.background = drawable
             }
         }
         when(kalimat_split.size){
