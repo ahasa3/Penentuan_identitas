@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         val kalimat_clear = kalimat.trim()
         if (kalimat_clear.isNotEmpty()) {
             val kalimat_split = kalimat_clear.split(" ")
-            val harakat = listOf("ْ","َ", "ِ", "ُ","ٍ","ٌ", "ً", "ًا", "وْا", "َا")
+            val harakat = listOf("ْ","َ", "ِ", "ُ","ٍ","ٌ", "ً", "ًا", "وْا", "َا","ى")
             var isHarakatComplete = true
             for ((index, kata) in kalimat_split.withIndex()) {
                 val lastChar = kata.takeLast(1)

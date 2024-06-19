@@ -81,6 +81,7 @@ class KedudukanDialog: BottomSheetDialogFragment(){
             "Na'at" -> text = "Menjadi Na'at karena lafadz $kata mensifati kata sebelumnya dan memiliki I'rob yang sama dengan kata sebelumnya.\nDalilnya:"
             "Mustasna'" -> text = "Menjadi Mustasna' karena lafadz $kata jatuh setelah Adat / Alat Istisna'.\nDalilnya:"
             "Ma'thuf 'Alaih"-> text = "Menjadi Ma'thuf 'Alaih karena lafadz $kata berada setelah Huruf 'Athof.\nDalilnya:"
+            "Maf'ul Bih" -> text = "Menjadi Maf'ul Bih karena lafadz $kata I'robnya Nashob dan menjadi sasaran pekerjaan dari kata sebelumnya.\nDalilnya:"
             else -> text = "Mohon Maaf, untuk saat ini aplikasi kami belum bisa mengidentifikasi kedudukan lafadz tersebut."
         }
         val isi:MutableList<String> = DalilKeterangan.dalilKedudukan(text,kedudukan,identitas)
