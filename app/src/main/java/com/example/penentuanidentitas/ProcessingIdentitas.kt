@@ -17,7 +17,7 @@ class ProcessingKalimat {
             "tidak_gabung" to listOf("وَ","اَوْ","اَمْ","ثُمِِّ","حَتَّى","لَا","بَلْ","لَكِنْ","اِمَّا"),
             "gabung" to listOf("فَ"))
         val lafadz_taukid = listOf("نَفْس","عَيْن","كُلّ","اَجْمَع","اَبْتَع","اَكْتَع","اَبْصَع")
-        val adat_istitsna = listOf("اِلَّا","إِلَّا","غَيْرُ","سِوَى","سُوَى","سَوَا","خَلَا","عَدَا","حَشَا")
+        val adat_istitsna = listOf("اِلَّا","إِلَّا","غَيْرُ","غَيْرَ","سِوَى","سُوَى","سَوَا","خَلَا","عَدَا","حَشَا")
         val huruf_jer = mapOf(
             "tidak_gabung" to listOf("مِنَ","مِنْ","اِلَى","فِى","عَنْ","عَنِ","عَلَى","مُذْ","مُنْذُ","رُبَّ"),
             "gabung" to listOf("بِ","كَ","لِ","وَ","تَ"))
@@ -29,18 +29,14 @@ class ProcessingKalimat {
             val kalimat_split = kalimat.split(" ")
             for ((index,kata_) in kalimat_split.withIndex()) {
                 var kata = kata_
-                val panjang_ = kata.length
                 when{
-                    kata.length > 2 -> when{
-                        kata.substring(panjang_-1,panjang_)=="ْ" &&
-                                amil_jawazim["gabung"]!!.contains(kata.substring(0,2)) ->{
-                            kata = kata.substring(2,panjang_)
-                        }
-                        kata.substring(panjang_-1,panjang_)=="َ" &&
-                                amil_nashob["gabung"]!!.contains(kata.substring(0,2)) -> {
-                            kata = kata.substring(2,panjang_)
-                        }
-                    }
+                    kata.takeLast(2)=="هُ"||
+                            kata.takeLast(2)=="هَ"-> kata = kata.substring(0,kata.length-2)
+                    kata.takeLast(3)=="نَا" -> kata = kata.substring(0,kata.length-3)
+                    kata.takeLast(4)=="هُمْ" -> kata = kata.substring(0,kata.length-4)
+                    kata.takeLast(5)=="هُمَا" ||
+                    kata.takeLast(5)=="هُنَّ"-> kata = kata.substring(0,kata.length-5)
+
                 }
                 val panjang = kata.length
                 when{
@@ -70,11 +66,11 @@ class ProcessingKalimat {
                         ciriAwal.add("None")
                         ciriAkhir.add("None")
                     }
-//                    kana_dan_saudaranya.contains(kata) -> {
-//                        identitas.add("Keluarga Kaana")
-//                        ciriAwal.add("None")
-//                        ciriAkhir.add("None")
-//                    }
+                    kana_dan_saudaranya.contains(kata) -> {
+                        identitas.add("Keluarga Kaana")
+                        ciriAwal.add("None")
+                        ciriAkhir.add("None")
+                    }
                     inna_dan_saudaranya.contains(kata) -> {
                         identitas.add("Keluarga Inna")
                         ciriAwal.add("None")
@@ -126,7 +122,6 @@ class ProcessingKalimat {
                                 kata.takeLast(4) != "يْنِ" &&
                                 kata.substring(panjang - 3, panjang - 1) != "ات" &&
                                 kata.takeLast(2) != "تِ" -> when {                //kasrah         (3)
-                            kata.substring(0,3) == "الْ" ||
                             kata.substring(0,2)=="ال"-> {              //when kedua adalah mencari  ciri awal
                                 identitas.add("Isim Mufrod")
                                 ciriAwal.add(kata.substring(0,2))
@@ -155,8 +150,7 @@ class ProcessingKalimat {
                                 kata.takeLast(3) != "ْنَ" &&
                                 kata.takeLast(2) != "نَ" &&
                                 kata.takeLast(2) != "يَ" -> when {                 //fathah         (4)
-                            kata.substring(0,3) == "الْ" ||
-                                    kata.substring(0,2)=="ال"-> {
+                            kata.substring(0,2)=="ال"-> {
                                 identitas.add("Isim Mufrod")
                                 ciriAwal.add(kata.substring(0,2))
                                 ciriAkhir.add(kata.takeLast(1))
@@ -230,8 +224,7 @@ class ProcessingKalimat {
                             }
                         }
                         kata.takeLast(3) == "انِ" -> when {                   //aani        (7)
-                            kata.substring(0,3) == "الْ" ||
-                                    kata.substring(0,2)=="ال"-> {
+                            kata.substring(0,2)=="ال"-> {
                                 identitas.add("Isim Tatsniyah")
                                 ciriAwal.add(kata.substring(0,2))
                                 ciriAkhir.add(kata.takeLast(3))
@@ -254,8 +247,7 @@ class ProcessingKalimat {
                         }
                         kata.takeLast(1) == "ُ" &&
                                 kata.takeLast(3) != "ْتُ" -> when {                  //dhammah    (8)
-                            kata.substring(0,3) == "الْ" ||
-                                    kata.substring(0,2)=="ال"-> {
+                            kata.substring(0,2)=="ال"-> {
                                 identitas.add("Isim Mufrod")
                                 ciriAwal.add(kata.substring(0,2))
                                 ciriAkhir.add(kata.takeLast(1))
@@ -292,8 +284,7 @@ class ProcessingKalimat {
                             ciriAkhir.add(kata.takeLast(1))
                         }
                         kata.takeLast(4) == "وْنَ" -> when {                   //uuna          (10)
-                            kata.substring(0,3) == "الْ" ||
-                                    kata.substring(0,2)=="ال"-> {
+                            kata.substring(0,2)=="ال"-> {
                                 identitas.add("Jama' Mudzakar Salim")
                                 ciriAwal.add(kata.substring(0,2))
                                 ciriAkhir.add(kata.takeLast(4))
@@ -320,8 +311,7 @@ class ProcessingKalimat {
                             }
                         }
                         kata.takeLast(3) == "ْتُ" -> when{                         //sukun tu     (11)
-                            kata.substring(0,3) == "الْ"||
-                                    kata.substring(0,2)=="ال"->{
+                            kata.substring(0,2)=="ال"->{
                                 identitas.add("Isim Mufrod")
                                 ciriAwal.add(kata.substring(0,3))
                                 ciriAkhir.add(kata.takeLast(1))
@@ -343,8 +333,7 @@ class ProcessingKalimat {
                             ciriAkhir.add(kata.takeLast(3))
                         }
                         kata.takeLast(4) == "يْنَ" -> when {                     //iina        (14)
-                            kata.substring(0,3) == "الْ"||
-                                    kata.substring(0,2)=="ال"-> {
+                            kata.substring(0,2)=="ال"-> {
                                 identitas.add("Jama' Mudzakar Salim")
                                 ciriAwal.add(kata.substring(0,2))
                                 ciriAkhir.add(kata.takeLast(4))
@@ -361,8 +350,7 @@ class ProcessingKalimat {
                             }
                         }
                         kata.takeLast(4) == "يْنِ" -> when {                     //ayni        (15)
-                            kata.substring(0,3) == "الْ"||
-                                    kata.substring(0,2)=="ال"-> {
+                            kata.substring(0,2)=="ال"-> {
                                 identitas.add("Isim Tatsniyah")
                                 ciriAwal.add(kata.substring(0,2))
                                 ciriAkhir.add(kata.takeLast(4))
@@ -374,8 +362,7 @@ class ProcessingKalimat {
                             }
                         }
                         kata.substring(panjang - 3, panjang - 1) == "ات" -> when {                  //aati       (16)
-                            kata.substring(0,3) == "الْ" ||
-                                    kata.substring(0,2)=="ال"-> {
+                            kata.substring(0,2)=="ال"-> {
                                 identitas.add("Jama' Muannats Salim")
                                 ciriAwal.add(kata.substring(0,2))
                                 ciriAkhir.add(kata.substring(panjang - 3, panjang - 1))
@@ -429,8 +416,7 @@ class ProcessingKalimat {
                             ciriAkhir.add(kata.takeLast(4))
                         }
                         kata.takeLast(2) == "نَ" -> when {                       //na         (24)
-                            kata.substring(0,3) == "الْ" ||
-                                    kata.substring(0,2)=="ال"-> {
+                            kata.substring(0,2)=="ال"-> {
                                 identitas.add("Isim Mufrod")
                                 ciriAwal.add(kata.substring(0,2))
                                 ciriAkhir.add(kata.takeLast(1))
@@ -549,6 +535,10 @@ class ProcessingKalimat {
                         irab.add("Mengikuti Irab Sebelumnya")
                         tanda_irab.add(akhir)
                     }
+                    identity == "Lafadz Taukid" ->{
+                        irab.add("Mengikuti Irab Sebelumnya")
+                        tanda_irab.add(akhir)
+                    }
                     identity == "Isim Mufrod" -> when (akhir) {
                         "ُ","ٌ" ->{
                             irab.add("Rofa'")
@@ -563,6 +553,7 @@ class ProcessingKalimat {
                             tanda_irab.add(akhir)
                         }
                     }
+
                     identity == "Fi'il Mudhari'" -> when (akhir){
                         "ُ" ->{
                             irab.add("Rofa'")
@@ -719,8 +710,7 @@ class ProcessingKalimat {
                         kedudukan.add("Mubtada'")
                         mubtada = true
                     }
-                    index!=kalimat_split.size-1 && identitas[index+1]== "Lafadz Taukid" ->kedudukan.add("Taukid")
-                    identity == "Lafadz Taukid" -> kedudukan.add("Lafadz Taukid")
+                    identity == "Lafadz Taukid" -> kedudukan.add("Taukid")
                     identity == "Fi'il Mudhari'" ||
                             identity == "Fi'il Madhi" -> when (mubtada){
                         true -> {
@@ -769,7 +759,7 @@ class ProcessingKalimat {
                             idhofah = true
                         }
                         kata.substring(kata.length-1,kata.length)== "ُ" &&
-                                kata.substring(0,3) != "الْ" &&
+                                kata.substring(0,2) != "ال" &&
                                 index!=0-> {
                             kedudukan.add("Mudhof")
                             idhofah = true
@@ -811,7 +801,7 @@ class ProcessingKalimat {
                             idhofah = true
                         }
                         kata.substring(kata.length-1,kata.length)=="َ" &&
-                                kata.substring(0,3) != "الْ" -> {
+                                kata.substring(0,2) != "ال" -> {
                             kedudukan.add("Mudhof")
                             idhofah = true
                         }

@@ -74,7 +74,8 @@ class HasilDialog: BottomSheetDialogFragment(){
             }
             tanda_irab == "Membuang Huruf 'Illat" -> text = "Irabnya $irab karena merupakan $identitas mu'tal akhir.\nDalilnya:"
             kedudukan=="Mustasna'" -> text = "I'robnya $irab karena berada setelah Adat atau Alat Istisna'.\nDalilnya:"
-            else -> text = "Irabnya $irab ditandai dengan $tandaIrab karena $identitas.\nDalilnya:"
+            kedudukan=="Taukid" -> text = "I'robnya $irab karena berada merupakan Taukid, sehingga i'robnya mengikuti muakkadnya (kata yang ditaukidi atau dikuatkan).\nDalilnya:"
+            else -> text = "I'robnya $irab ditandai dengan $tandaIrab karena $identitas.\nDalilnya:"
         }
         val isi:MutableList<String> = DalilKeterangan.dalilIrab(text,irab,identitas,tanda_irab,identitasSebelumnya,kedudukan)
         binding.textViewKketerangan.text= isi.joinToString(separator = "\n")
