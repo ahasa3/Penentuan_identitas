@@ -92,37 +92,43 @@
         <TextView
             android:id="@+id/text_view_identitas_1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/text_view_identitas_2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/text_view_identitas_3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/text_view_identitas_4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/text_view_identitas_5"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/text_view_identitas_6"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:textAlignment="center"/>
     </LinearLayout>
 

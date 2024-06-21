@@ -31,9 +31,14 @@ class ProcessingKalimat {
                 var kata = kata_
                 when{
                     kata.takeLast(2)=="هُ"||
-                            kata.takeLast(2)=="هَ"-> kata = kata.substring(0,kata.length-2)
-                    kata.takeLast(3)=="نَا" -> kata = kata.substring(0,kata.length-3)
-                    kata.takeLast(4)=="هُمْ" -> kata = kata.substring(0,kata.length-4)
+                            kata.takeLast(2)=="هَ" ||
+                    kata.takeLast(2)=="كَ"-> when(kata) {
+                        "اللَّهُ","اللَّهَ"->kata = kata
+                        else-> kata = kata.substring(0, kata.length - 2)
+                    }
+                    kata.takeLast(3)=="نَا" && kata!="اَنَا"-> kata = kata.substring(0,kata.length-3)
+                    kata.takeLast(4)=="هُمْ" ||
+                    kata.takeLast(4)=="نِيْ"-> kata = kata.substring(0,kata.length-4)
                     kata.takeLast(5)=="هُمَا" ||
                     kata.takeLast(5)=="هُنَّ"-> kata = kata.substring(0,kata.length-5)
 
@@ -60,6 +65,11 @@ class ProcessingKalimat {
                         ciriAwal.add("None")
                         ciriAkhir.add("None")
                     }
+                    isim_dhomir.contains(kata) -> {
+                        identitas.add("Isim Dhomir")
+                        ciriAwal.add("None")
+                        ciriAkhir.add("None")
+                    }
                     asmaul_khomsah.contains(kata.substring(0,3)) ||
                             asmaul_khomsah.contains(kata.substring(0,4)) -> {
                         identitas.add("Asmaul Khomsah")
@@ -73,11 +83,6 @@ class ProcessingKalimat {
                     }
                     inna_dan_saudaranya.contains(kata) -> {
                         identitas.add("Keluarga Inna")
-                        ciriAwal.add("None")
-                        ciriAkhir.add("None")
-                    }
-                    isim_dhomir.contains(kata) -> {
-                        identitas.add("Isim Dhomir")
                         ciriAwal.add("None")
                         ciriAkhir.add("None")
                     }
@@ -170,6 +175,16 @@ class ProcessingKalimat {
                                 ciriAwal.add(kata.substring(0,1))
                                 ciriAkhir.add(kata.takeLast(1))
                             }
+                            index!=0 && kana_dan_saudaranya.contains(kalimat_split[index-1]) ->{
+                                identitas.add("Isim Mufrod")
+                                ciriAwal.add("None")
+                                ciriAkhir.add(kata.takeLast(1))
+                            }
+                            index!=0 && inna_dan_saudaranya.contains(kalimat_split[index-1]) ->{
+                                identitas.add("Isim Mufrod")
+                                ciriAwal.add("None")
+                                ciriAkhir.add(kata.takeLast(1))
+                            }
                             else -> when(panjang){
                                 5, 6, 8 ->{
                                     identitas.add("Fi'il Madhi")
@@ -246,7 +261,8 @@ class ProcessingKalimat {
                             }
                         }
                         kata.takeLast(1) == "ُ" &&
-                                kata.takeLast(3) != "ْتُ" -> when {                  //dhammah    (8)
+                                kata.takeLast(3) != "ْتُ" &&
+                        kata.takeLast(3)!="اتُ"-> when {                  //dhammah    (8)
                             kata.substring(0,2)=="ال"-> {
                                 identitas.add("Isim Mufrod")
                                 ciriAwal.add(kata.substring(0,2))
@@ -523,11 +539,9 @@ class ProcessingKalimat {
                     identity =="Amil Jawazim" ||
                     identity == "Isim Dhomir" ||
                     identity == "Adat Istisna'" ||
-                    identity == "Isim Isyarah"-> {
-                        irab.add("Mabni")
-                        tanda_irab.add("None")
-                    }
-                    identity == "Keluarga Inna" -> {
+                    identity == "Isim Isyarah" ||
+                            identity == "Keluarga Inna"||
+                    identity=="Keluarga Kaana"-> {
                         irab.add("Mabni")
                         tanda_irab.add("None")
                     }
@@ -654,15 +668,18 @@ class ProcessingKalimat {
                     }
                     identity=="Asmaul Khomsah" -> when{
                         kata.substring(4,5) == "ُ" ||
-                                kata.substring(4,5) == "ٌ" ->{
+                                kata.substring(4,5) == "ٌ" ||
+                                kata.substring(kata.length-4,kata.length-2)=="وْ" ->{
                             irab.add("Rofa'")
                             tanda_irab.add(kata.substring(4,5))
                         }
-                        kata.substring(4,5) == "َ" ->{
+                        kata.substring(4,5) == "َ" ||
+                                kata.substring(kata.length-4,kata.length-2)=="َا"->{
                             irab.add("Nashob")
                             tanda_irab.add(kata.substring(4,5))
                         }
-                        kata.substring(4,5) == "ِ" ->{
+                        kata.substring(4,5) == "ِ"||
+                                kata.substring(kata.length-4,kata.length-2)=="يْ" ->{
                             irab.add("Jer")
                             tanda_irab.add(kata.substring(4,5))
                         }
@@ -693,6 +710,7 @@ class ProcessingKalimat {
             var idhofah = false
             var kaana = false
             var inna = false
+            var jumlah = false
             for ((index, kata) in kalimat_split.withIndex()){
                 val identity = identitas[index]
                 val irab = irab_[index]
@@ -714,7 +732,7 @@ class ProcessingKalimat {
                     identity == "Fi'il Mudhari'" ||
                             identity == "Fi'il Madhi" -> when (mubtada){
                         true -> {
-                            kedudukan.add("Khobar (Fi'il)")
+                            kedudukan.add("Khobar Jumlah Fi'liyah (Fi'il)")
                             fiil = true
                         }
                         else -> {
@@ -727,23 +745,44 @@ class ProcessingKalimat {
                         kedudukan.add("Fi'il")
                         fiil = true
                     }
-                    identity == "Isim Isyarah" -> kedudukan.add("Tidak Diketahui")
-                    index!=0 && identitas[index-1]=="Isim Isyarah" -> {
-                        kedudukan.add("Mubtada")
-                        mubtada = true
+                    identity == "Isim Isyarah" -> when(mubtada){
+                        true -> {
+                            kedudukan.add("Khobar Jumlah Isimiyah (Mubtada')")
+                            jumlah = true
+                        }
+                        else->{
+                            kedudukan.add("Mubtada'")
+                            mubtada = true
+                        }
                     }
                     irab == "Rofa'" -> when{
-                        kaana == true -> kedudukan.add("Mubtada' Kaana")
+                        kaana == true -> {
+                            kedudukan.add("Mubtada' Kaana")
+                            mubtada =true
+                        }
                         inna == true ->{
                             kedudukan.add("Khobar Inna")
                             inna = false
+                            mubtada=false
                         }
-                        mubtada == true -> {
-                            kedudukan.add("Khobar")
-                            mubtada = false
+                        mubtada == true -> when{
+                            jumlah == true -> {
+                                kedudukan.add("Khobar Jumlah Isimiyah (Khobar)")
+                                jumlah = false
+                                mubtada = false
+                            }
+                            kata.takeLast(1)== "ُ" && kata.substring(0,2) != "ال" ->{
+                                kedudukan.add("Khobar")
+                                mubtada = false
+                                idhofah=true
+                            }
+                            else->{
+                                kedudukan.add("Khobar")
+                                mubtada = false
+                            }
                         }
                         fiil == true && mubtada == true ->{
-                            kedudukan.add("Khobar (Fa'il)")
+                            kedudukan.add("Khobar Jumlah Fi'liyah (Fa'il)")
                             fiil = false
                             mubtada = false
                         }
@@ -752,7 +791,7 @@ class ProcessingKalimat {
                             fiil = false
                             fail = true
                         }
-                        kata.substring(kata.length-1,kata.length)== "ُ" &&
+                        kata.takeLast(1)== "ُ" &&
                                 kata.substring(0,2) != "ال" &&
                         index!=0-> {
                             kedudukan.add("Mudhof")
@@ -776,11 +815,11 @@ class ProcessingKalimat {
                         kaana == true ->{
                             kedudukan.add("Khobar Kaana")
                             kaana = false
+                            mubtada = false
                         }
-                        inna == true -> kedudukan.add("Mubtada' Inna")
-                        index!=0 && identitas[index-1]=="Keluarga Inna" ->{
-                            kedudukan.add("Mubtada'")
-                            mubtada = true
+                        inna == true -> {
+                            kedudukan.add("Mubtada' Inna")
+                            mubtada=true
                         }
                         index!=0 && mubtada==true ->{
                             kedudukan.add("Khobar")

@@ -244,8 +244,10 @@ class DalilKeterangan {
                         BaitImrithi.babMubtadaKhabar["terjemah"]!!.get(2)
                     )
                 }
-                kedudukan =="Khobar (Fa'il)" ||
-                kedudukan =="Khobar (Fi'il)"->{
+                kedudukan =="Khobar Jumlah Fi'liyah (Fa'il)" ||
+                kedudukan =="Khobar Jumlah Fi'liyah (Fi'il)" ||
+                kedudukan =="Khobar Jumlah Ismiyah (Mubtada')" ||
+                kedudukan =="Khobar Jumlah Ismiyah (Khobar)" ->{
                     posisi = mutableListOf(
                         text,
                         BaitImrithi.babMubtadaKhabar["arab"]!!.get(10),
