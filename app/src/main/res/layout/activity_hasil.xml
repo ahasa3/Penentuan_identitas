@@ -24,13 +24,6 @@
         android:gravity="center"
         android:layout_marginBottom="16dp">
         <TextView
-            android:id="@+id/text_view_hasil_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:fontFamily="@font/arabic"
-            tools:ignore="MissingConstraints" />
-        <TextView
             android:id="@+id/text_view_hasil_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,13 +81,6 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_marginBottom="16dp">
-
-        <TextView
-            android:id="@+id/text_view_identitas_1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/text_view_identitas_2"
@@ -156,12 +142,6 @@
         android:layout_marginBottom="16dp">
 
         <TextView
-            android:id="@+id/text_view_irab_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"/>
-
-        <TextView
             android:id="@+id/text_view_irab_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -214,13 +194,6 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_marginBottom="16dp">
-
-        <TextView
-            android:id="@+id/text_view_kedudukan_1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/text_view_kedudukan_2"

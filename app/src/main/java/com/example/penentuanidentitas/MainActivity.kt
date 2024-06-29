@@ -13,6 +13,8 @@ import com.example.penentuanidentitas.databinding.ActivityMainBinding
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import android.content.Intent
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_content)
+        DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.button_bg))
         binding.buttonProcess.setOnClickListener {
             val kalimat = binding.textInputUser.text.toString()
             checkHarakat(kalimat)
@@ -55,8 +59,8 @@ class MainActivity : AppCompatActivity() {
             if (kalimat_split.size < 2){
                 Toast.makeText(this, "Kalimat harus lebih dari 2 kata", Toast.LENGTH_LONG).show()
             }
-            else if (kalimat_split.size > 6) {
-                Toast.makeText(this, "Kalimat tidak boleh lebih dari 6 kata", Toast.LENGTH_LONG).show()
+            else if (kalimat_split.size > 5) {
+                Toast.makeText(this, "Kalimat tidak boleh lebih dari 5 kata", Toast.LENGTH_LONG).show()
             }
             else if (isHarakatComplete) {
                 val hasil_intent = Intent(this, HasilActivity::class.java).apply {

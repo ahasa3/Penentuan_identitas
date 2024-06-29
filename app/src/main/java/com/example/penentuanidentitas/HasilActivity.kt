@@ -65,12 +65,6 @@ class HasilActivity : AppCompatActivity() {
                     binding.textViewHasil2.setPadding(10,5,10,5)
                     binding.textViewHasil2.setBackgroundColor(getColor(R.color.index2))
                 }
-                5->{
-                    binding.textViewHasil1.text = text
-                    binding.textViewHasil1.setTextSize(28f)
-                    binding.textViewHasil1.setPadding(10,5,10,5)
-                    binding.textViewHasil1.setBackgroundColor(getColor(R.color.index1))
-                }
             }
         }
         for ((index, kata_) in identitas.withIndex()){
@@ -105,11 +99,6 @@ class HasilActivity : AppCompatActivity() {
                     binding.textViewIdentitas2.setTextSize(18f)
                     binding.textViewIdentitas2.setPadding(10,5,10,5)
                     binding.textViewIdentitas2.setBackgroundColor(getColor(R.color.index2))
-                }5->{
-                    binding.textViewIdentitas1.text = kata
-                    binding.textViewIdentitas1.setTextSize(18f)
-                    binding.textViewIdentitas1.setPadding(10,5,10,5)
-                    binding.textViewIdentitas1.setBackgroundColor(getColor(R.color.index1))
                 }
             }
         }
@@ -154,12 +143,6 @@ class HasilActivity : AppCompatActivity() {
                     binding.textViewIrab2.setBackgroundColor(getColor(R.color.index2))
                     binding.textViewIrab2.setTextSize(18f)
                     binding.textViewIrab2.setPadding(10,5,10,5)
-                }
-                5->{
-                    binding.textViewIrab1.text = irab_
-                    binding.textViewIrab1.setBackgroundColor(getColor(R.color.index1))
-                    binding.textViewIrab1.setTextSize(18f)
-                    binding.textViewIrab1.setPadding(10,5,10,5)
                 }
             }
         }
@@ -206,12 +189,6 @@ class HasilActivity : AppCompatActivity() {
                     binding.textViewKedudukan2.setTextSize(18f)
                     binding.textViewKedudukan2.setPadding(10,5,10,5)
                 }
-                5->{
-                    binding.textViewKedudukan1.text = posisi
-                    binding.textViewKedudukan1.setBackgroundColor(getColor(R.color.index1))
-                    binding.textViewKedudukan1.setTextSize(18f)
-                    binding.textViewKedudukan1.setPadding(10,5,10,5)
-                }
             }
         }
         when(kalimat_split.size){
@@ -235,11 +212,6 @@ class HasilActivity : AppCompatActivity() {
                 DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index2))
                 binding.textViewHasil2.background = drawable
             }
-            6 -> {
-                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
-                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index1))
-                binding.textViewHasil1.background = drawable
-            }
         }
         when(kalimat_split.size){
             2 ->{
@@ -261,11 +233,6 @@ class HasilActivity : AppCompatActivity() {
                 val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
                 DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index2))
                 binding.textViewIdentitas2.background = drawable
-            }
-            6 -> {
-                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
-                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index1))
-                binding.textViewIdentitas1.background = drawable
             }
         }
         when(kalimat_split.size){
@@ -289,11 +256,6 @@ class HasilActivity : AppCompatActivity() {
                 DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index2))
                 binding.textViewIrab2.background = drawable
             }
-            6 -> {
-                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
-                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index1))
-                binding.textViewIrab1.background = drawable
-            }
         }
         when(kalimat_split.size){
             2 ->{
@@ -315,11 +277,6 @@ class HasilActivity : AppCompatActivity() {
                 val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
                 DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index2))
                 binding.textViewKedudukan2.background = drawable
-            }
-            6 -> {
-                val drawable = ContextCompat.getDrawable(this, R.drawable.rounded_kiri)
-                DrawableCompat.setTint(drawable!!, ContextCompat.getColor(this, R.color.index1))
-                binding.textViewKedudukan1.background = drawable
             }
         }
     }
@@ -373,19 +330,6 @@ class HasilActivity : AppCompatActivity() {
             val dialog_kedudukan = KedudukanDialog.intanceBaru(isi_dialog)
             supportFragmentManager.let{dialog_kedudukan.show(it, KedudukanDialog.TAG)}
         }
-        binding.textViewKedudukan1.setOnClickListener {
-            val kedudukanSebelumnya:String
-            when (irab[5]){
-                "Mengikuti Kedudukan Sebelumnya" -> when {
-                    irab[0] == "Mabni" -> kedudukanSebelumnya = irab[3]
-                    else-> kedudukanSebelumnya = irab[4]
-                }
-                else-> kedudukanSebelumnya = "None"
-            }
-            val isi_dialog = listOf(kalimat_split[5],identitas[5],irab[5],tanda_irab[5],kedudukan[5],kalimat_split[4],kedudukanSebelumnya)
-            val dialog_kedudukan = KedudukanDialog.intanceBaru(isi_dialog)
-            supportFragmentManager.let{dialog_kedudukan.show(it, KedudukanDialog.TAG)}
-        }
         binding.textViewHasil6.setOnClickListener {
             val isi_dialog = listOf(kalimat_split[0],identitas[0],irab[0],tanda_irab[0],kedudukan[0],"None")
             val dialog_hasil = HasilDialog.newInstance(isi_dialog)
@@ -411,11 +355,6 @@ class HasilActivity : AppCompatActivity() {
             val dialog_hasil = HasilDialog.newInstance(isi_dialog)
             supportFragmentManager.let{dialog_hasil.show(it, HasilDialog.TAG)}
         }
-        binding.textViewHasil1.setOnClickListener {
-            val isi_dialog = listOf(kalimat_split[5],identitas[5],irab[5],tanda_irab[5],kedudukan[5],identitas[4])
-            val dialog_hasil = HasilDialog.newInstance(isi_dialog)
-            supportFragmentManager.let{dialog_hasil.show(it, HasilDialog.TAG)}
-        }
         binding.textViewIrab6.setOnClickListener {
             val isi_dialog = listOf(kalimat_split[0],identitas[0],irab[0],tanda_irab[0],kedudukan[0],"None")
             val dialog_hasil = HasilDialog.newInstance(isi_dialog)
@@ -438,11 +377,6 @@ class HasilActivity : AppCompatActivity() {
         }
         binding.textViewIrab2.setOnClickListener {
             val isi_dialog = listOf(kalimat_split[4],identitas[4],irab[4],tanda_irab[4],kedudukan[4],identitas[3])
-            val dialog_hasil = HasilDialog.newInstance(isi_dialog)
-            supportFragmentManager.let{dialog_hasil.show(it, HasilDialog.TAG)}
-        }
-        binding.textViewIrab1.setOnClickListener {
-            val isi_dialog = listOf(kalimat_split[5],identitas[5],irab[5],tanda_irab[5],kedudukan[5],identitas[4])
             val dialog_hasil = HasilDialog.newInstance(isi_dialog)
             supportFragmentManager.let{dialog_hasil.show(it, HasilDialog.TAG)}
         }
